@@ -16,3 +16,8 @@
   float: left;
   padding: 16px;
 }
+
+.card-category:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  transition: box-shadow 0.5s;
+}
