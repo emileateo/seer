@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   def preview
     @birth_date = params['date']
     @birth_time = params['time']
+  end
 
   def studiespost
   end
