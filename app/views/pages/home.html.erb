@@ -3,19 +3,25 @@
   <h2>Take destiny into your hands.</h2>
 </div>
 
-<div class="container d-flex justify-content-around mt-5">
-  <div class="container">
-    Studies
+<div class="container mt-5">
+  <p>Want to know more about...</p>
+  <div class="cards container d-flex justify-content-around">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5428833/pexels-photo-5428833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+    Studies?
   </div>
-  <div class="container">
-    Career
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4065864/pexels-photo-4065864.jpeg?cs=srgb&dl=pexels-cottonbro-4065864.jpg)">
+    Career?
   </div>
-  <div class="container">
-    Relationship
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+    Relationships?
   </div>
-  <div class="container">
-    Health
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1083981/pexels-photo-1083981.jpeg?cs=srgb&dl=pexels-tatiana-1083981.jpg&fm=jpg)">
+    Health?
   </div>
+</div>
 </div>
 
 <div class="container mt-5">
@@ -27,7 +33,10 @@
       <input type="time" placeholder="hh:mm AM" pattern="(\d?\d):(\d\d)( (AM|PM|am|pm))?" name="time" id="birthTime" value="">.&nbsp;
     </div>
     <div class="header-btns">
-      <input type="submit" class="btn-ghost mt-2" tabindex="0" value="Get a reading">
+      <input type="submit" class="btn-ghost mt-2" value="Get a reading">
+      <!-- gives params 'date' and 'time' -->
     </div>
   </form>
+
+  <p>Already have an account? <%= link_to 'Log in', new_user_session_path %></p>
 </div>
