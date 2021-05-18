@@ -4,27 +4,6 @@
 </div>
 
 <div class="container mt-5">
-  <p>Want to know more about...</p>
-  <div class="cards container d-flex justify-content-around">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5428833/pexels-photo-5428833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    Studies?
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4065864/pexels-photo-4065864.jpeg?cs=srgb&dl=pexels-cottonbro-4065864.jpg)">
-    Career?
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    Relationships?
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1083981/pexels-photo-1083981.jpeg?cs=srgb&dl=pexels-tatiana-1083981.jpg&fm=jpg)">
-    Health?
-  </div>
-</div>
-</div>
-
-<div class="container mt-5">
   <form name="new_user_form" novalidate="" action="/preview">
     <div class="user-data info">
       <span> I was born on&nbsp;</span>
@@ -37,6 +16,37 @@
       <!-- gives params 'date' and 'time' -->
     </div>
   </form>
+</div>
 
+<div class="container mt-5">
+  <p>Want to know more about...</p>
+  <div class="cards container">
+    <a href="<%= studiespost_path %>">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5428833/pexels-photo-5428833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+        Studies?
+      </div>
+    </a>
+
+    <a href="<%= careerpost_path %>">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4065864/pexels-photo-4065864.jpeg?cs=srgb&dl=pexels-cottonbro-4065864.jpg)">
+        Career?
+      </div>
+    </a>
+
+    <a href="<%= relationshippost_path %>">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+        Relationships?
+      </div>
+    </a>
+
+    <a href="<%= healthpost_path %>">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1083981/pexels-photo-1083981.jpeg?cs=srgb&dl=pexels-tatiana-1083981.jpg&fm=jpg)">
+        Health?
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="container mt-5">
   <p>Already have an account? <%= link_to 'Log in', new_user_session_path %></p>
 </div>
