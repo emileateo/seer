@@ -1,2 +1,33 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-5">
+  <h1>Seer</h1>
+  <h2>Take destiny into your hands.</h2>
+</div>
+
+<div class="container d-flex justify-content-around mt-5">
+  <div class="container">
+    Studies
+  </div>
+  <div class="container">
+    Career
+  </div>
+  <div class="container">
+    Relationship
+  </div>
+  <div class="container">
+    Health
+  </div>
+</div>
+
+<div class="container mt-5">
+  <form name="new_user_form" novalidate="">
+    <div class="user-data info">
+      <span> I was born on&nbsp;</span>
+      <input required="" type="date" placeholder="yyyy-mm-dd" pattern="\d\d\d\d-\d\d-\d\d" min="1500-01-01" max="2500-12-31" name="date" value="">
+      <span>&nbsp;at&nbsp;</span>
+      <input type="time" placeholder="hh:mm AM" pattern="(\d?\d):(\d\d)( (AM|PM|am|pm))?" name="time" id="birthTime" value="">.&nbsp;
+    </div>
+    <div class="header-btns">
+      <input type="submit" class="btn-ghost mt-2" tabindex="0" value="Get a reading">
+    </div>
+  </form>
+</div>
