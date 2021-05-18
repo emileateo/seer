@@ -18,4 +18,19 @@ class PagesController < ApplicationController
 
   def healthpost
   end
+
+  def preferences
+  end
+
+  def studiespost
+  end
+
+  def careerpost
+  end
+
+  def relationshippost
+  end
+
+  def healthpost
+  end
 end
