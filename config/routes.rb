@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get 'careerpost', to: 'pages#careerpost', as: :careerpost
   get 'relationshippost', to: 'pages#relationshippost', as: :relationshippost
   get 'healthpost', to: 'pages#healthpost', as: :healthpost
+
 end
