@@ -48,5 +48,6 @@
 </div>
 
 <div class="container mt-5">
+  <p><%= user_signed_in? ? "You are signed in as #{current_user.email}" : "You are not signed in yet." %></p>
   <p>Already have an account? <%= link_to 'Log in', new_user_session_path %></p>
 </div>
