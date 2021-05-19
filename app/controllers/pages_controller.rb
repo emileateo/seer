@@ -7,18 +7,6 @@ class PagesController < ApplicationController
     @birth_time = params['time']
   end
 
-  def studiespost
-  end
-
-  def careerpost
-  end
-
-  def relationshippost
-  end
-
-  def healthpost
-  end
-
   def preferences
   end
 
