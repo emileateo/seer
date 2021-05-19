@@ -13,6 +13,7 @@ class PagesController < ApplicationController
 
   def preferences
     @user = current_user
+    @categories = Category.all
   end
 
   def studiespost

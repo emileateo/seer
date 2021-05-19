@@ -1,12 +1,15 @@
 <h1>What are you interested in?</h1>
 
+<!-- input_html: { class: "category-selector" }, -->
+<!-- item_wrapper_class: 'category-item' -->
+
 <%= simple_form_for(@user) do |f| %>
-  <%= f.input :category, as: :check_boxes %>
-  <!-- <%= f.association :tags,
-                  as: :check_boxes,
-                  input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item' %> -->
+  <%= f.input :preferences,
+              collection: @categories,
+              as: :check_boxes,
+              input_html: { class: "category-selector" } %>
   <%= f.submit %>
 <% end %>
+
 
 
