@@ -7,6 +7,10 @@ class PagesController < ApplicationController
     @birth_time = params['time']
   end
 
+  def dashboard
+
+  end
+
   def preferences
   end
 
