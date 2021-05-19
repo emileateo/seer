@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   end
 
   def preferences
+    @user = current_user
   end
 
   def studiespost

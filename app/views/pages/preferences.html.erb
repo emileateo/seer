@@ -1,2 +1,12 @@
 <h1>What are you interested in?</h1>
 
+<%= simple_form_for(@user) do |f| %>
+  <%= f.input :category, as: :check_boxes %>
+  <!-- <%= f.association :tags,
+                  as: :check_boxes,
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item' %> -->
+  <%= f.submit %>
+<% end %>
+
+
