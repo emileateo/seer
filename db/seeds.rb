@@ -35,8 +35,8 @@ Category.create!(
 
   user.categories << Category.all.sample
 
-  # Post.create!(
-  #   category: category
-  #   )
+  Post.create!(
+    category: Category.all.sample
+    )
 puts "User created!"
 end
