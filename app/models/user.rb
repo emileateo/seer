@@ -9,7 +9,12 @@ class User < ApplicationRecord
 
   def preferred_posts
 
-    @user_categories = self.categories
+    if self.categories.count == 0
+      @user_categories = Category.all
+    else
+      @user_categories = self.categories
+    end
+
     @posts = Post.where(category: @user_categories)
 
   end

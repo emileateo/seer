@@ -11,6 +11,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @preferred_posts = current_user.preferred_posts.sample # [ P1, P2]
+
   end
 
   def preferences
