@@ -64,7 +64,7 @@
 .landing-text {
   text-align: center;
   margin-top: 60px;
-  margin-bottom: 200px;
+  margin-bottom: 60px;
 }
 
 .landing-text .title {
@@ -85,8 +85,14 @@
   margin: 20px;
 }
 
+.user-input-form {
+  justify-content: center;
+}
+
 .user-data {
   justify-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .dev-text {
