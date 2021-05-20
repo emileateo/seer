@@ -60,3 +60,50 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+.landing-text {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.landing-text .title {
+  margin-bottom: 60px;
+}
+
+.landing-text .title h1 {
+  font-size: 60px;
+}
+
+.landing-text .title h2 {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.landing-text p {
+  font-weight: lighter;
+  margin: 20px;
+}
+
+.user-input-form {
+  justify-content: center;
+}
+
+.user-data {
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-text {
+  opacity: 0.6;
+  background-color: #FFF;
+  padding: 16px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.dev-text a {
+  margin: 0;
+  padding: 0;
+}

@@ -1,10 +1,15 @@
-<div class="my-5">
-  <h1>Seer</h1>
-  <h2>Take destiny into your hands.</h2>
+<div class="landing-text">
+  <div class="title">
+    <h1>Seer</h1>
+    <h2>Take destiny into your hands.</h2>
+  </div>
+
+  <p>Gone are the days where Feng Shui meant groaning as your mother dragged you to Chinatown before the start of a new school year.</p>
+  <p>Get in touch with the Earth on your own terms.<br>Make your own story.</p>
 </div>
 
-<div class="my-5">
-  <form name="new_user_form" novalidate="" action="/preview">
+<div class="new-user-form">
+  <form name="new_user_form" novalidate="" action="/preview" class="user-input-form">
     <div class="user-data info">
       <span> I was born on&nbsp;</span>
       <input required="" type="date" placeholder="yyyy-mm-dd" pattern="\d\d\d\d-\d\d-\d\d" min="1500-01-01" max="2500-12-31" name="date" value="">
@@ -18,16 +23,17 @@
   </form>
 </div>
 
-<div class="my-5">
+<!-- <div class="my-5">
   <p>Want to know more about...</p>
   <div class="cards container">
-    <%= render Category.all %>
+     <=  render Category.all %>
   </div>
-</div>
+</div> -->
 
-<div class="my-5">
+<div class="dev-text my-5">
+  <p>for development purposes only...</p>
   <% if user_signed_in? %>
-    <p>You are signed in as <%= current_user.email %>.</p>
+    <p>You are signed in as <%= current_user.email %>.
     <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "nav-link" %></p>
   <% else %>
     <p>You are not signed in yet. <%= link_to 'Log in', new_user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %></p>

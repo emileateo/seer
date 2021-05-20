@@ -12,3 +12,20 @@
 @import "components/index";
 @import "pages/index";
 
+// Fonts for the app
+@import url('https://fonts.googleapis.com/css2?family=Forum&family=Nunito:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,400&display=swap');
+
+body {
+  background-color: #f3eee8;
+  font-family: 'Nunito', sans-serif;
+  font-weight: light;
+  padding-bottom: 56px;
+}
+
+h1 {
+  font-family: 'Forum', cursive;
+}
+
+h2, h3, h4 {
+  font-family: 'Nunito', sans-serif;
+}
