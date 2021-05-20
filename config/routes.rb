@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, controllers: { registrations: "registrations" }
+  resources :users
   root to: 'pages#home'
 
   get 'preferences', to: "pages#preferences", as: :preferences # this redirects user after successful sign up
