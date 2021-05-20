@@ -1,15 +1,21 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to dashboard_path, :class=> "nav-link" do %>
+    <i class="fas fa-home" aria-hidden="true" target="_blank"></i>
+  <% end %>
 
-        <%= link_to "/#", :class=> "nav-link" do %><i class="fas fa-home" aria-hidden="true" target="_blank"></i><% end %>
+  <%= link_to "/#", :class=> "nav-link" do %>
+    <i class="fas fa-envelope" aria-hidden="true" target="_blank"></i>
+  <% end %>
 
-        <%= link_to "/#", :class=> "nav-link" do %><i class="fas fa-envelope" aria-hidden="true" target="_blank"></i><% end %>
+  <%= link_to dashboard_path, class: "navbar-brand" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
 
-    <%= link_to "/#", class: "navbar-brand" do %>
-      <%= image_tag "logo.png" %>
-    <% end %>
+  <%= link_to "/#", :class=> "nav-link" do %>
+    <i class="far fa-calendar-plus" aria-hidden="true" target="_blank"></i>
+  <% end %>
 
-        <%= link_to "/#", :class=> "nav-link" do %><i class="far fa-calendar-plus" aria-hidden="true" target="_blank"></i><% end %>
-
-        <%= link_to "/#", :class=> "nav-link" do %><i class="fas fa-user" aria-hidden="true" target="_blank"></i><% end %>
-
+  <%= link_to "/#", :class=> "nav-link" do %>
+    <i class="fas fa-user" aria-hidden="true" target="_blank"></i>
+  <% end %>
 </div>
