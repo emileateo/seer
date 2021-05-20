@@ -12,4 +12,9 @@
 
   <div class="form-booking" >
     <h3>Interested in a consulation?</h3>
-</div>
+        <%= simple_form_for [@user, @appointment] do |f|%>
+        <%= f.input :message %>
+        <%= f.input :when, as: :datetime, html5: true %>
+        <%= f.submit 'Submit' %>
+      <% end %>
+  </div>
