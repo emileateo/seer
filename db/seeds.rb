@@ -75,7 +75,7 @@ puts "Categories created"
 
   Post.create!(
     title: Category.all.sample,
-    description: fortune["response"]["bot_response"]["relationship"]["split_response"],
+    description: fortune["response"]["bot_response"][user.categories[0].name]["split_response"],
     category: Category.all.sample,
     lucky_number: fortune["response"]["lucky_number"][0],
     lucky_color: fortune["response"]["lucky_color"]
