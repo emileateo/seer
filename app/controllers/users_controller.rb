@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @master = User.find(params[:id])
+    @appointment = Appointment.new
   end
 
   def update
@@ -27,9 +28,31 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def appointments
+    @appointment = Appointment.new(appointment_params)
+    @master = User.find(params[:id])
+    @appointment.master = @master
+    @appointment.user = current_user
+    @appointment.status = false
+    if @appointment.save
+      redirect_to root_path, notice: "We\'ve sent a request to #{@appointment.master.email}!"
+    else
+      render :show
+    end
+  end
+
+
   private
+
+  def appointment_params
+    params.require(:appointment).permit(
+      :message, :when)
+  end
 
   def user_params
     params.require(:user).permit(:email, :id, :master, :specialty)
   end
 end
+
+
+

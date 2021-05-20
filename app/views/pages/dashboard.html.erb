@@ -1,9 +1,18 @@
+<h1><%= Date.today.strftime("%A %-d %B") %></h1>
+<h4>Welcome back, <%= @user.email%></h4>
+
 <% if current_user.master? %>
   <% @appointments %>
 <% else %>
-  <div class="my-5">
-    <h1><%= Date.today.strftime("%A %-d %B") %></h1>
-    <%= render @preferred_posts %>
+  <%= render @preferred_posts %>
+
+  <div class="card-product">
+    <%= image_tag 'fortuneteller.jpg' %>
+    <div class="card-product-infos">
+      <h2>Book a service</h2>
+      <p>Consult a professional fortune teller</p>
+      <!-- placeholder for link_to master page -->
+    </div>
   </div>
 <% end %>
 
