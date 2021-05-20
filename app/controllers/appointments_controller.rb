@@ -9,4 +9,4 @@ class AppointmentsController < ApplicationController
 
   def consulation
   end
-
+end
