@@ -10,10 +10,13 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @preferred_posts = current_user.preferred_posts # [ P1, p2]
+    @preferred_posts = current_user.preferred_posts.sample # [ P1, P2]
+    # @todays_post =
   end
 
   def preferences
+    @user = current_user
+    @categories = Category.all
   end
 
   def studiespost

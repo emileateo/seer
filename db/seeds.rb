@@ -5,6 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+require 'open-uri'
+
+url = 'http://horoscope-api.herokuapp.com/horoscope/today/Libra'
+fortune_serialized = URI.open(url).read
+fortune = JSON.parse(fortune_serialized)
+
+puts fortune
 
 puts "Cleaning up database..."
 User.destroy_all
@@ -43,7 +51,7 @@ puts "Category created"
 
   Post.create!(
     title: Faker::Quote.yoda,
-    description: Faker::Quote.famous_last_words,
+    description: fortune["horoscope"],
     category: Category.all.sample
     )
 

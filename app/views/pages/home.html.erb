@@ -26,7 +26,11 @@
 </div>
 
 <div class="my-5">
-  <p><%= user_signed_in? ? "You are signed in as #{current_user.email}" : "You are not signed in yet." %></p>
-  <p><%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "nav-link" if user_signed_in? %></p>
-  <p>Already have an account? <%= link_to 'Log in', new_user_session_path %></p>
+  <% if user_signed_in? %>
+    <p>You are signed in as <%= current_user.email %>.</p>
+    <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "nav-link" %></p>
+  <% else %>
+    <p>You are not signed in yet. <%= link_to 'Log in', new_user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %></p>
+  <% end %>
 </div>
+
