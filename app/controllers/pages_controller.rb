@@ -10,6 +10,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    # if current_user.master?
+    #   @appointments
+    # else
+    # to be added in once appointments are created
+
     @preferred_posts = current_user.preferred_posts.sample # [ P1, P2]
 
   end
