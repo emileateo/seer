@@ -4,5 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :preferences, dependent: :destroy
-  has_many :categories, through: :preferences
+  has_many :categories, through: :preferences, dependent: :destroy
+  has_many :posts, through: :categories, dependent: :destroy
+
+  def preferred_posts
+    posts.sample(2)
+  end
 end

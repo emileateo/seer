@@ -1,9 +1,9 @@
-<div class="container mt-5">
+<div class="my-5">
   <h1>Seer</h1>
   <h2>Take destiny into your hands.</h2>
 </div>
 
-<div class="container mt-5">
+<div class="my-5">
   <form name="new_user_form" novalidate="" action="/preview">
     <div class="user-data info">
       <span> I was born on&nbsp;</span>
@@ -18,35 +18,14 @@
   </form>
 </div>
 
-<div class="container mt-5">
+<div class="my-5">
   <p>Want to know more about...</p>
   <div class="cards container">
-    <a href="<%= studiespost_path %>">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5428833/pexels-photo-5428833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        Studies?
-      </div>
-    </a>
-
-    <a href="<%= careerpost_path %>">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4065864/pexels-photo-4065864.jpeg?cs=srgb&dl=pexels-cottonbro-4065864.jpg)">
-        Career?
-      </div>
-    </a>
-
-    <a href="<%= relationshippost_path %>">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        Relationships?
-      </div>
-    </a>
-
-    <a href="<%= healthpost_path %>">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1083981/pexels-photo-1083981.jpeg?cs=srgb&dl=pexels-tatiana-1083981.jpg&fm=jpg)">
-        Health?
-      </div>
-    </a>
+    <%= render Category.all %>
   </div>
 </div>
 
+redirect-after-signup
 <div class="container mt-5">
   <% if user_signed_in? %>
     <p>You are signed in as <%= current_user.email %>.</p>
@@ -54,4 +33,9 @@
   <% else %>
     <p>You are not signed in yet. <%= link_to 'Log in', new_user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %></p>
   <% end %>
+
+<div class="my-5">
+  <p><%= user_signed_in? ? "You are signed in as #{current_user.email}" : "You are not signed in yet." %></p>
+  <p><%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "nav-link" if user_signed_in? %></p>
+  <p>Already have an account? <%= link_to 'Log in', new_user_session_path %></p>
 </div>

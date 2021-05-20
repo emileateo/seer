@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :preview]
+
   def home
   end
 
@@ -8,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
+    @preferred_posts = current_user.preferred_posts # [ P1, p2]
   end
 
   def preferences
