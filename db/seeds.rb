@@ -15,28 +15,16 @@ fortune = JSON.parse(fortune_serialized)
 puts fortune
 
 puts "Cleaning up database..."
-User.destroy_all
 Category.destroy_all
 # Post.destroy_all
 puts "Database cleaned"
 
-Category.create!(
-  name: "Career"
-  )
+Category.create!(name: "Career")
+Category.create!(name: "Health")
+Category.create!(name: "Studies")
+Category.create!(name: "Relationship")
 
-Category.create!(
-  name: "Health"
-  )
-
-Category.create!(
-  name: "Studies"
-  )
-
-Category.create!(
-  name: "Relationship"
-  )
-
-puts "Category created"
+puts "Categories created"
 
 10.times do
   user = User.create!(
@@ -46,8 +34,7 @@ puts "Category created"
 
   puts "User created!"
 
-
-  user.categories << Category.all.sample
+  user.categories << Category.all.sample(2)
 
   Post.create!(
     title: Faker::Quote.yoda,
@@ -57,7 +44,7 @@ puts "Category created"
 
   puts "Post created!"
 
-  user = User.create!(
+  User.create!(
     email: Faker::Internet.email,
     password: "123456",
     master: true,
@@ -65,4 +52,23 @@ puts "Category created"
     )
 
   puts "Master created!"
+end
+
+
+case Rails.env
+when "development"
+  User.destroy_all
+
+  10.times do
+    user = User.create!(
+      email: Faker::Internet.email,
+      password: "123456"
+      )
+
+    puts "User created!"
+
+    user.categories << Category.all.sample(2)
+  end
+when "production"
+  # nothing unique yet
 end
