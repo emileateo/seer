@@ -73,3 +73,16 @@
   font-size: 24px;
   font-weight: lighter;
 }
+
+.dev-text {
+  opacity: 0.6;
+  background-color: #FFF;
+  padding: 16px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.dev-text a {
+  margin: 0;
+  padding: 0;
+}
