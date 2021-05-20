@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :posts, through: :categories, dependent: :destroy
 
   def preferred_posts
-    posts.sample(2)
+    posts.sample
   end
 end

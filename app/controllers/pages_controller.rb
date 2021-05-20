@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @preferred_posts = current_user.preferred_posts # [ P1, p2]
+    @preferred_posts = current_user.preferred_posts
   end
 
   def preferences
