@@ -17,12 +17,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:email, :id, :master, :specialty)
-  end
-  
   def update
     @user = User.find(params[:id])
     @preferences_array = params[:user][:preferences]
@@ -31,5 +25,11 @@ class UsersController < ApplicationController
       @user.categories << Category.find(category.to_i)
     end
     redirect_to dashboard_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :id, :master, :specialty)
   end
 end
