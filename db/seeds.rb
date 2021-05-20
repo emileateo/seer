@@ -46,6 +46,7 @@ puts "Category created"
 
   puts "User created!"
 
+
   user.categories << Category.all.sample
 
   Post.create!(
@@ -56,4 +57,12 @@ puts "Category created"
 
   puts "Post created!"
 
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: "123456",
+    master: true,
+    specialty: "Love Compatability"
+    )
+
+  puts "Master created!"
 end
