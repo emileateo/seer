@@ -9,23 +9,26 @@
 puts "Cleaning up database..."
 User.destroy_all
 Category.destroy_all
+# Post.destroy_all
 puts "Database cleaned"
 
 Category.create!(
-    name: "Career"
-    )
+  name: "Career"
+  )
 
 Category.create!(
-    name: "Health"
-    )
+  name: "Health"
+  )
 
 Category.create!(
-    name: "Studies"
-    )
+  name: "Studies"
+  )
 
 Category.create!(
-    name: "Relationship"
-    )
+  name: "Relationship"
+  )
+
+puts "Category created"
 
 10.times do
   user = User.create!(
@@ -33,10 +36,16 @@ Category.create!(
     password: "123456"
     )
 
+  puts "User created!"
+
   user.categories << Category.all.sample
 
   Post.create!(
+    title: Faker::Quote.yoda,
+    description: Faker::Quote.famous_last_words,
     category: Category.all.sample
     )
-puts "User created!"
+
+  puts "Post created!"
+
 end
