@@ -1,10 +1,8 @@
 <div class="container">
-  <h1> All Masters</h1>
-    <% @masters.each do |master| %>
-      <div class="card-product">
-        <%= link_to master.email, master  %>
-      </div>
-    <% end %>
+  <h1>All Masters</h1>
+  <% @masters.each do |master| %>
+    <div class="card-product">
+      <%= link_to master.email, master  %>
+    </div>
+  <% end %>
 </div>
-
-
