@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :posts, through: :categories, dependent: :destroy
 
   def preferred_posts
-
     if self.categories.count == 0
       @user_categories = Category.all
     else
@@ -16,6 +15,5 @@ class User < ApplicationRecord
     end
 
     @posts = Post.where(category: @user_categories)
-
   end
 end
