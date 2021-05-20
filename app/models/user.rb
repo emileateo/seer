@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :posts, through: :categories, dependent: :destroy
 
   def preferred_posts
-    posts.sample
+
+    @user_categories = self.categories
+    @posts = Post.where(category: @user_categories)
+
   end
 end
