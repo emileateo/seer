@@ -2,19 +2,19 @@
   <h1> Selected Master Page</h1>
     <div class="card-product mt-0">
       <h2>
-      <%= @user.email %>
+      <%= @master.email %>
       </h2>
         <ul>
-          <li><Strong>Speciality</Strong> <%= @user.specialty %></li>
+          <li><Strong>Speciality</Strong> <%= @master.specialty %></li>
         </ul>
     </div>
 </div>
 
-  <div class="form-booking" >
+  <div class="form-appointment" >
     <h3>Interested in a consulation?</h3>
-        <%= simple_form_for [@user, @appointment] do |f|%>
-        <%= f.input :message %>
+        <%= simple_form_for [@master, @appointment], url: appointments_user_path(@master) do |f|%>
         <%= f.input :when, as: :datetime, html5: true %>
+        <%= f.input :message %>
         <%= f.submit 'Submit' %>
       <% end %>
   </div>

@@ -4,6 +4,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    raise
     @appointment = Appointment.new(appointment_params)
     @appointment.master_id = user.find(params[:master_id])
     @appointment.user_id = current_user
