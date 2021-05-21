@@ -27,16 +27,25 @@ class UsersController < ApplicationController
     @appointment.user = current_user
     @appointment.status = false
     if @appointment.save
-      redirect_to appointments_path, notice: "We\'ve sent a request to #{@appointment.master.email}!"
+      redirect_to dashboard_path, notice: "We\'ve sent a request to #{@appointment.master.email}!"
     else
       render :show
     end
+  end
+
+
+  def approve_appointments
+    @appointment = Appointment.find(params[:id])
+    @appointment.toggle(:status)
+    @appointment.save
+    redirect_to dashboard_path
   end
 
   private
 
   def appointment_params
     params.require(:appointment).permit(:message, :when, :id)
+
   end
 
   def user_params

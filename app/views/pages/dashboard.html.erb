@@ -1,11 +1,36 @@
 <h1><%= Date.today.strftime("%A %-d %B") %></h1>
-<h4>Welcome back, <%= @user.email%></h4>
+<p>Welcome back, <%= @user.email%></p>
 
 <% if current_user.master? %>
-  <% @appointments %>
+  <% if @unaccepted_appointments.count != 0 %>
+    <h2>Your requests:</h2>
+    <% @unaccepted_appointments.each do |request| %>
+      <div class="card-product">
+        <ul>
+          <li>From: <%= request.user.email %></li>
+          <li>Message: <%= request.message %> </li>
+          <li>For: <%= request.when %> </li>
+          <li><%= link_to "Approve", approve_appointments_user_path(request), method: :patch %></li>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+  <% if @accepted_appointments.count != 0 %>
+    <h2>Your upcoming appointments:</h2>
+    <% @accepted_appointments.each do |request| %>
+      <div class="card-product">
+        <div class="approved-details">
+          <h4><%= request.when %></h4>
+          <ul>
+            <li>From: <%= request.user.email %></li>
+            <li>Message: <%= request.message %> </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 <% else %>
   <%= render @preferred_posts %>
-
   <!-- placeholder for link_to master page -->
   <%= link_to masters_users_path do %>
     <div class="card-product">

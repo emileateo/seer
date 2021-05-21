@@ -11,9 +11,14 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    @appointments = Appointment.all
     @preferred_posts = current_user.preferred_posts.sample # [P1, P2]
     # @todays_post =
+
+    @appointments = Appointment.all
+
+    @unaccepted_appointments = Appointment.where(status: false)
+    @accepted_appointments = Appointment.where(status: true)
+    @accepted_appointments.order!(:when)
   end
 
   def preferences
