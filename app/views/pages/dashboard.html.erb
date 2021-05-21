@@ -5,7 +5,7 @@
   <% if @unaccepted_appointments.count != 0 %>
     <h2>Your requests:</h2>
     <% @unaccepted_appointments.each do |request| %>
-      <div class="card-product">
+      <div class="card-product unaccepted">
         <ul>
           <li>From: <%= request.user.email %></li>
           <li>Message: <%= request.message %> </li>
@@ -18,7 +18,7 @@
   <% if @accepted_appointments.count != 0 %>
     <h2>Your upcoming appointments:</h2>
     <% @accepted_appointments.each do |request| %>
-      <div class="card-product">
+      <div class="card-product accepted">
         <div class="approved-details">
           <h4><%= request.when %></h4>
           <ul>

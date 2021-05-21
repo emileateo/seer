@@ -1,14 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
-  # def index
-  #   @users = User.where(master: true)
-  #   @master_list = []
-  #   @users.each do |user|
-  #     @master_list << user
-  #   end
-  # end
-
   def masters
     @masters = User.where(master: true)
   end
@@ -41,6 +33,7 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def approve_appointments
     @appointment = Appointment.find(params[:id])
     @appointment.toggle(:status)
@@ -52,12 +45,16 @@ class UsersController < ApplicationController
 
   def appointment_params
     params.require(:appointment).permit(:message, :when)
+=======
+  private
+
+  def appointment_params
+    params.require(:appointment).permit(:message, :when, :id)
+>>>>>>> 1c819f5241cf9c099caace998f6bbd750b74eca8
   end
 
   def user_params
     params.require(:user).permit(:email, :id, :master, :specialty)
   end
 end
-
-
 

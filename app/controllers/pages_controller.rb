@@ -17,8 +17,7 @@ class PagesController < ApplicationController
     @appointments = Appointment.all
 
     @unaccepted_appointments = Appointment.where(status: false)
-    @accepted_appointments = Appointment.where(status: true)
-    @accepted_appointments.order!(:when)
+    @accepted_appointments = Appointment.where(status: true).order!(:when)
   end
 
   def preferences
