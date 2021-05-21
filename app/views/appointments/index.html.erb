@@ -1,0 +1,10 @@
+
+<% if @unaccepted_appointments.count != 0 %>
+<h2>Your requests:</h2>
+<%= render @unaccepted_appointments %>
+<% end %>
+<% if @accepted_appointments.count != 0 %>
+<h2>Your upcoming appointments:</h2>
+<%= render @accepted_appointments %>
+<% end %>
+
