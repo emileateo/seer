@@ -11,6 +11,8 @@ require 'zodiac'
 require 'date'
 
 puts "Cleaning up database..."
+puts "Cleaning up database..."
+
 Category.destroy_all
 # Post.destroy_all
 puts "Database cleaned"
@@ -23,91 +25,84 @@ Category.create!(name: "Relationship")
 puts "Categories created"
 
 10.times do
-  user = User.create!(
-    email: Faker::Internet.email,
-    password: "123456",
-    birthdate: Faker::Date.between_except(from: 10.years.ago, to: 1.year.from_now, excepted: Date.today)
-    )
+  rand_zodiac = rand(1..12).to_s
 
-  puts "User created!"
-
-  user_zodiac = user.birthdate.zodiac_sign
-
-  puts user_zodiac
-
-  if user_zodiac == "Aries"
-    user_zodiac = "1"
-  elsif user_zodiac == "Taurus"
-    user_zodiac = "2"
-  elsif user_zodiac == "Gemini"
-    user_zodiac = "3"
-  elsif user_zodiac == "Cancer"
-    user_zodiac = "4"
-  elsif user_zodiac == "Leo"
-    user_zodiac = "5"
-  elsif user_zodiac == "Virgo"
-    user_zodiac = "6"
-  elsif user_zodiac == "Libra"
-    user_zodiac = "7"
-  elsif user_zodiac == "Scorpio"
-    user_zodiac = "8"
-  elsif user_zodiac == "Sagittarius"
-    user_zodiac = "9"
-  elsif user_zodiac == "Capricorn"
-    user_zodiac = "10"
-  elsif user_zodiac == "Aquarius"
-    user_zodiac = "11"
-  else user_zodiac = "12"
-  end
-
-  puts user_zodiac
-
-  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21&split=true"
-
+  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21&split=true"
   puts url
+
   fortune_serialized = URI.open(url).read
   fortune = JSON.parse(fortune_serialized)
-  puts fortune
+  pp fortune
 
-  user.categories << Category.all.sample
-
-  post_category = Category.all.sample.name
+  post_category = Category.all.sample
 
   Post.create!(
-    title: Category.all.sample,
-    description: fortune["response"]["bot_response"]["#{post_category}"]["split_response"],
-    category: Category.all.sample,
-    lucky_number: fortune["response"]["lucky_number"][0],
-    lucky_color: fortune["response"]["lucky_color"]
-    )
+    title: post_category.name,
+    description: fortune["response"]["bot_response"][post_category.name.downcase]["split_response"],
+    category: post_category,
+    # lucky_number: fortune["response"]["lucky_number"][0],
+    # lucky_color: fortune["response"]["lucky_color"]
+  )
 
   puts "Post created!"
-
-  User.create!(
-    email: Faker::Internet.email,
-    password: "123456",
-    master: true,
-    specialty: "Love Compatability"
-    )
-
-  puts "Master created!"
 end
 
 
 case Rails.env
 when "development"
+  Appointment.destroy_all
+  puts "Development appointments deleted"
   User.destroy_all
+  puts "Development users deleted"
 
   10.times do
-    user = User.create!(
+    rand_zodiac = rand(1..12).to_s
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21&split=true"
+    fortune = JSON.parse(URI.open(url).read)
+
+    User.create!(
       email: Faker::Internet.email,
-      password: "123456"
-      )
+      password: "123456",
+      categories: Category.all.sample(2),
+      birthdate: Faker::Date.between_except(from: 10.years.ago, to: 1.year.from_now, excepted: Date.today),
+      master: false,
+      lucky_number: fortune["response"]["lucky_number"][0],
+      lucky_color: fortune["response"]["lucky_color"]
+    )
 
     puts "User created!"
 
-    user.categories << Category.all.sample(2)
+
+    User.create!(
+      email: Faker::Internet.email,
+      password: "123456",
+      master: true,
+      specialty: Faker::Games::Pokemon.move
+    )
+
+    puts "Master created!"
   end
 when "production"
   # nothing unique yet
 end
+
+# Keeping this zodiac logic cos Aiden spent a lot of time typing it out LOL
+
+  # user_zodiac = user.birthdate.zodiac_sign
+
+  # puts user_zodiac
+
+  # case user_zodiac
+  # when "Aries" then user_zodiac = "1"
+  # when "Taurus" then user_zodiac = "2"
+  # when "Gemini" then user_zodiac = "3"
+  # when "Cancer" then user_zodiac = "4"
+  # when "Leo" then user_zodiac = "5"
+  # when "Virgo" then user_zodiac = "6"
+  # when "Libra" then user_zodiac = "7"
+  # when "Scorpio" then user_zodiac = "8"
+  # when "Sagittarius" then user_zodiac = "9"
+  # when "Capricorn" then user_zodiac = "10"
+  # when "Aquarius" then user_zodiac = "11"
+  # when "Pisces" then user_zodiac = "12"
+  # end
