@@ -7,6 +7,7 @@ class AppointmentsController < ApplicationController
 
   def consulation
   end
+
   def show
     # @appointments =
   end
