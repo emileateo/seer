@@ -15,6 +15,11 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :birthdate,
+                required: true,
+                as: :date,
+                html5: true,
+                input_html: { value: @birthdate.nil? ? "" : Date.strptime(@birthdate) }%>
   </div>
 
   <div class="form-actions">
