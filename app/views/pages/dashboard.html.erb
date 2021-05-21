@@ -1,11 +1,11 @@
 <h1><%= Date.today.strftime("%A %-d %B") %></h1>
-<h4>Welcome back, <%= @user.email%></h4>
+<p>Welcome back, <%= @user.email%></p>
 
 <% if current_user.master? %>
+  <h2>You have upcoming requests</h2>
   <% @appointments %>
 <% else %>
   <%= render @preferred_posts %>
-
   <div class="card-product">
     <%= image_tag 'fortuneteller.jpg' %>
     <div class="card-product-infos">
