@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @preferences_array.each do |category|
       @user.categories << Category.find(category.to_i)
     end
-    redirect_to dashboard_path
+    render dashboard_path
   end
 
   def appointments
@@ -41,11 +41,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def approve_appointments
+    @appointment = Appointment.find(params[:id])
+    @appointment.toggle(:status)
+    @appointment.save
+    redirect_to dashboard_path
+  end
+
   private
 
   def appointment_params
-    params.require(:appointment).permit(
-      :message, :when)
+    params.require(:appointment).permit(:message, :when)
   end
 
   def user_params

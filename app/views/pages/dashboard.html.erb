@@ -3,19 +3,20 @@
 
 <% if current_user.master? %>
   <% if @unaccepted_appointments.count != 0 %>
-    <h2>You have upcoming requests</h2>
+    <h2>Your requests:</h2>
     <% @unaccepted_appointments.each do |request| %>
       <div class="card-product">
         <ul>
           <li>From: <%= request.user.email %></li>
           <li>Message: <%= request.message %> </li>
           <li>For: <%= request.when %> </li>
+          <li><%= link_to "Approve", approve_appointments_user_path(request), method: :patch %></li>
         </ul>
       </div>
     <% end %>
   <% end %>
   <% if @accepted_appointments.count != 0 %>
-    <h2>Your upcoming appointments</h2>
+    <h2>Your upcoming appointments:</h2>
     <% @accepted_appointments.each do |request| %>
       <div class="card-product">
         <ul>

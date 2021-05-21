@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     member do
       post :appointments
+      patch :approve_appointments
     end
   end
 

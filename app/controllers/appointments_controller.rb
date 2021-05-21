@@ -3,9 +3,6 @@ class AppointmentsController < ApplicationController
     @appointments = Appointments.all
   end
 
-  def approve
-  end
-
   def consulation
   end
 end
