@@ -7,4 +7,15 @@ class AppointmentsController < ApplicationController
 
   def consulation
   end
+
+  def show
+    # @appointments =
+  end
+
+  def update
+    @appointment = Appointment.find(params[:id])
+    @appointment.toggle(:status)
+    @appointment.save
+    redirect_to dashboard_path
+  end
 end

@@ -3,7 +3,7 @@
   <%= image_tag "#{@sign.downcase}.jpg" %>
   <div class="card-product-infos">
     <h2>Zodiac sign</h2>
-    <p>You are a <%= @sign %></p>
+    <p>You are born in the year of the <%= @sign %>.</p>
   </div>
 </div>
 
@@ -24,6 +24,6 @@
 </div>
 
 <div class="my-5">
-  Want to find out more? <%= link_to 'Sign up!', new_user_registration_path %>
+  Want to find out more? <%= link_to 'Sign up', new_user_registration_path %>!
 </div>
 </div>
