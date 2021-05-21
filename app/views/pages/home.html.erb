@@ -11,12 +11,12 @@
 <div class="new-user-form">
   <form name="new_user_form" novalidate="" action="/preview" class="user-input-form">
     <div class="user-data info">
-      <span> I was born on&nbsp;</span>
-      <input required="" type="date" placeholder="yyyy-mm-dd" pattern="\d\d\d\d-\d\d-\d\d" min="1500-01-01" max="2500-12-31" name="date" value="">
+      <span>&nbsp;My name is&nbsp;</span>
+      <input required="" type="text" placeholder="Name" name="name" id="name" value="">&nbsp;
     </div>
     <div class="user-data info">
-      <span>&nbsp;at&nbsp;</span>
-      <input type="time" placeholder="hh:mm AM" pattern="(\d?\d):(\d\d)( (AM|PM|am|pm))?" name="time" id="birthTime" value="">.&nbsp;
+      <span> I was born on&nbsp;</span>
+      <input required="" type="date" placeholder="dd-mm-yyyy" pattern="\d\d-\d\d-\d\d\d\d" min="01-01-1500" max="12-31-2500" name="date" value="">
     </div>
     <div class="header-btns">
       <input type="submit" class="button mt-2" value="Get a reading">

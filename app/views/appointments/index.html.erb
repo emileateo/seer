@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="requests mt-3"></div>
+  <div class="requests mt-3">
     <% if @unaccepted_appointments.count != 0 %>
-      <h3>Your requests:</h3>
+      <h3>Your pending requests:</h3>
       <%= render @unaccepted_appointments %>
     <% end %>
   </div>
   <div class="accepted_requests mt-3">
     <% if @accepted_appointments.count != 0 %>
-      <h3>Upcoming appointments:</h3>
+      <h3>Your confirmed appointments:</h3>
       <%= render @accepted_appointments %>
     <% end %>
   </div>

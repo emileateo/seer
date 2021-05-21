@@ -2,36 +2,34 @@
 <p>Welcome back, <%= @user.email%></p>
 
 <% if current_user.master? %>
+
   <% if @unaccepted_appointments.count != 0 %>
-    <h2>Your requests:</h2>
-    <% @unaccepted_appointments.each do |request| %>
-      <div class="card-product">
-        <ul>
-          <li>From: <%= request.user.email %></li>
-          <li>Message: <%= request.message %> </li>
-          <li>For: <%= request.when %> </li>
-          <li><%= link_to "Approve", approve_appointments_user_path(request), method: :patch %></li>
-        </ul>
-      </div>
-    <% end %>
+    <div class="requests mt-3">
+      <h3>Your pending requests:</h3>
+      <%= render @unaccepted_appointments %>
+    </div>
   <% end %>
+
   <% if @accepted_appointments.count != 0 %>
-    <h2>Your upcoming appointments:</h2>
-    <% @accepted_appointments.each do |request| %>
-      <div class="card-product">
-        <div class="approved-details">
-          <h4><%= request.when %></h4>
-          <ul>
-            <li>From: <%= request.user.email %></li>
-            <li>Message: <%= request.message %> </li>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+    <div class="accepted-requests mt-3">
+      <h3>Your upcoming appointments:</h3>
+      <%= render @accepted_appointments %>
+    </div>
   <% end %>
+
 <% else %>
+
   <%= render @preferred_posts %>
-  <!-- placeholder for link_to master page -->
+
+  <%= link_to appointments_path do %>
+    <div class="card-product">
+      <%= image_tag 'fortuneteller.jpg' %>
+      <div class="card-product-infos">
+        <h2>View upcoming appointments</h2>
+      </div>
+    </div>
+  <% end %>
+
   <%= link_to masters_users_path do %>
     <div class="card-product">
       <%= image_tag 'fortuneteller.jpg' %>
@@ -41,6 +39,7 @@
       </div>
     </div>
   <% end %>
+
 <% end %>
 
 

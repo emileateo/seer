@@ -33,23 +33,13 @@ class UsersController < ApplicationController
     end
   end
 
-
-  def approve_appointments
-    @appointment = Appointment.find(params[:id])
-    @appointment.toggle(:status)
-    @appointment.save
-    redirect_to dashboard_path
-  end
-
   private
 
   def appointment_params
     params.require(:appointment).permit(:message, :when, :id)
-
   end
 
   def user_params
     params.require(:user).permit(:email, :id, :master, :specialty)
   end
 end
-

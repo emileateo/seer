@@ -71,11 +71,11 @@ puts "Categories created"
 
   user.categories << Category.all.sample
 
-  puts Category.all.sample.name
+  post_category = Category.all.sample.name
 
   Post.create!(
     title: Category.all.sample,
-    description: fortune["response"]["bot_response"]["relationship"]["split_response"],
+    description: fortune["response"]["bot_response"]["#{post_category}"]["split_response"],
     category: Category.all.sample,
     lucky_number: fortune["response"]["lucky_number"][0],
     lucky_color: fortune["response"]["lucky_color"]

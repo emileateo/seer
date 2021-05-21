@@ -1,3 +1,8 @@
+require 'json'
+require 'open-uri'
+require 'zodiac'
+require 'date'
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :preview]
 
@@ -5,8 +10,31 @@ class PagesController < ApplicationController
   end
 
   def preview
-    @birth_date = params['date']
-    @birth_time = params['time']
+    @name = params[:name]
+    @birth_date = params[:date]
+
+    @visitor_birth_date = Date.parse(params[:date])
+    @year = @visitor_birth_date.year
+    @visitor_birth_date_reversed = @visitor_birth_date.strftime("%d/%m/%Y")
+
+    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21"
+    fortune_serialized = URI.open(url).read
+    @fortune = JSON.parse(fortune_serialized)
+
+    case (@year - 2000) % 12
+    when 0 then @sign = 'Dragon'
+    when 1 then @sign = 'Snake'
+    when 2 then @sign = 'Horse'
+    when 3 then @sign = 'Sheep'
+    when 4 then @sign = 'Monkey'
+    when 5 then @sign = 'Rooster'
+    when 6 then @sign = 'Dog'
+    when 7 then @sign = 'Pig'
+    when 8 then @sign = 'Rat'
+    when 9 then @sign = 'Ox'
+    when 10 then @sign = 'Tiger'
+    when 11 then @sign = 'Hare'
+    end
   end
 
   def dashboard
@@ -17,8 +45,7 @@ class PagesController < ApplicationController
     @appointments = Appointment.all
 
     @unaccepted_appointments = Appointment.where(status: false)
-    @accepted_appointments = Appointment.where(status: true)
-    @accepted_appointments.order!(:when)
+    @accepted_appointments = Appointment.where(status: true).order!(:when)
   end
 
   def preferences

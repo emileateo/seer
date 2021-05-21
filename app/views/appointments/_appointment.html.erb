@@ -1,19 +1,5 @@
-<% if appointment.status %>
-<div class="card-product accepted">
-  <div class="approved-details">
-    <h5 class="approved-details-date mx-3">When:<%= appointment.when %></h5>
-    <ul>
-      <li>From: <%= appointment.user.email %></li>
-      <li>Message: <%= appointment.message %> </li>
-    </ul>
-  </div>
-</div>
+<% if appointment.user == current_user %>
+  <%= render "user_appointment", appointment: appointment %>
 <% else %>
-<div class="card-product unaccepted">
-  <ul>
-    <li><strong>Master:</strong> <%= appointment.master.email %></li>
-    <li><strong>Message:</strong> <%= appointment.message %> </li>
-    <li><strong>For:</strong> <%= appointment.when %> </li>
-  </ul>
-</div>
+  <%= render "appointments/master_appointment", appointment: appointment %>
 <% end %>
