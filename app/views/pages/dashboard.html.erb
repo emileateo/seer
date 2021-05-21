@@ -19,11 +19,13 @@
     <h2>Your upcoming appointments:</h2>
     <% @accepted_appointments.each do |request| %>
       <div class="card-product">
-        <ul>
-          <li>From: <%= request.user.email %></li>
-          <li>Message: <%= request.message %> </li>
-          <li>For: <%= request.when %> </li>
-        </ul>
+        <div class="approved-details">
+          <h4><%= request.when %></h4>
+          <ul>
+            <li>From: <%= request.user.email %></li>
+            <li>Message: <%= request.message %> </li>
+          </ul>
+        </div>
       </div>
     <% end %>
   <% end %>

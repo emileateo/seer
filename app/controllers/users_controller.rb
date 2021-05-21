@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @appointment.user = current_user
     @appointment.status = false
     if @appointment.save
-      redirect_to root_path, notice: "We\'ve sent a request to #{@appointment.master.email}!"
+      redirect_to dashboard_path, notice: "We\'ve sent a request to #{@appointment.master.email}!"
     else
       render :show
     end
