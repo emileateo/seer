@@ -1,0 +1,19 @@
+<% if appointment.status %>
+<div class="card-product accepted">
+  <div class="approved-details">
+    <h4><%= appointment.when %></h4>
+    <ul>
+      <li>From: <%= appointment.user.email %></li>
+      <li>Message: <%= appointment.message %> </li>
+    </ul>
+  </div>
+</div>
+<% else %>
+<div class="card-product unaccepted">
+  <ul>
+    <li>From: <%= appointment.user.email %></li>
+    <li>Message: <%= appointment.message %> </li>
+    <li>For: <%= appointment.when %> </li>
+  </ul>
+</div>
+<% end %>

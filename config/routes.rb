@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post :appointments
     end
   end
+  resources :appointments, only: [:index]
 
   get 'preferences', to: "pages#preferences", as: :preferences # this redirects user after successful sign up
 
