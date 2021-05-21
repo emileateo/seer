@@ -2,7 +2,7 @@
 <div class="card-product accepted">
   <div class="approved-details">
     <h5 class="approved-details-date mx-3">When:<%= appointment.when %></h5>
-    <ul style="list-style-type: none;">
+    <ul>
       <li>From: <%= appointment.user.email %></li>
       <li>Message: <%= appointment.message %> </li>
     </ul>
@@ -10,7 +10,7 @@
 </div>
 <% else %>
 <div class="card-product unaccepted">
-  <ul style="list-style-type: none;">
+  <ul>
     <li><strong>Master:</strong> <%= appointment.master.email %></li>
     <li><strong>Message:</strong> <%= appointment.message %> </li>
     <li><strong>For:</strong> <%= appointment.when %> </li>
