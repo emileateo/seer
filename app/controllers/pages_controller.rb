@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     @year = @visitor_birth_date.year
     @visitor_birth_date_reversed = @visitor_birth_date.strftime("%d/%m/%Y")
 
-    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21"
+    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=137cde35-f262-50d5-b689-8bea6537d23d"
     fortune_serialized = URI.open(url).read
     @fortune = JSON.parse(fortune_serialized)
 
@@ -40,9 +40,11 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @user.master = false unless @user.master
     @user_zodiac = user_zodiac(@user)
+    # raise
 
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=137cde35-f262-50d5-b689-8bea6537d23d&split=true"
     # prediction is for the day itself
     fortune = JSON.parse(URI.open(url).read)
 
