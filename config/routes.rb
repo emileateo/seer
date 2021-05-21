@@ -13,7 +13,8 @@ Rails.application.routes.draw do
       patch :approve_appointments
     end
   end
-  resources :appointments, only: [:index]
+
+  resources :appointments, only: [:index, :update]
 
   get 'preferences', to: "pages#preferences", as: :preferences # this redirects user after successful sign up
 

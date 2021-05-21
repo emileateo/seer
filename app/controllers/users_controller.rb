@@ -33,7 +33,6 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def approve_appointments
     @appointment = Appointment.find(params[:id])
     @appointment.toggle(:status)
@@ -44,17 +43,10 @@ class UsersController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:message, :when)
-=======
-  private
-
-  def appointment_params
     params.require(:appointment).permit(:message, :when, :id)
->>>>>>> 1c819f5241cf9c099caace998f6bbd750b74eca8
   end
 
   def user_params
     params.require(:user).permit(:email, :id, :master, :specialty)
   end
 end
-

@@ -5,11 +5,9 @@ class AppointmentsController < ApplicationController
     @accepted_appointments = Appointment.where(status: true, user: @user).order(when: :desc)
   end
 
-<<<<<<< HEAD
   def consulation
-=======
+  end
   def show
     # @appointments =
->>>>>>> 1c819f5241cf9c099caace998f6bbd750b74eca8
   end
 end
