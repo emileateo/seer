@@ -54,10 +54,16 @@
 
 .new-user-form .button {
   color: #FFF;
-  background-color: #AACCAA;
+  background-color: #000;
   border-radius: 16px;
   padding: 4px 16px 4px 16px;
-  border: 0.5px solid rgba(0,0,0,0);
+  border: none;
+}
+
+.new-user-form .button:hover{
+  color: #000;
+  background-color: rgba(255,255,255,0.5);
+  transition: color 0.3s, background-color 0.3s;
 }
 
 .dev-text {
