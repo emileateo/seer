@@ -2,6 +2,7 @@ require 'json'
 require 'open-uri'
 require 'zodiac'
 require 'date'
+require 'nokogiri'
 
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :preview]
@@ -46,6 +47,13 @@ class PagesController < ApplicationController
     else
         @sign = 'Hare'
     end
+
+    zodiac_url = "https://chinesenewyear.net/zodiac/#{@sign.downcase}/"
+    html_file = URI.open(zodiac_url).read
+    html_doc = Nokogiri::HTML(html_file)
+
+    parsed_content = html_doc.search('.article-content.page-section p').first
+    @parsed_text = parsed_content.text.strip
   end
 
   def dashboard
