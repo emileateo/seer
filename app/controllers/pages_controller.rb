@@ -12,10 +12,10 @@ class PagesController < ApplicationController
   def preview
     @name = params[:name]
     @birth_date = params[:date]
-    @year = params[:year].to_i
 
-    visitor_birth_date = Time.new(params[:date])
-    visitor_birth_date_reversed = visitor_birth_date.strftime("%d/%m/%Y")
+    @visitor_birth_date = Date.parse(params[:date])
+    @year = @visitor_birth_date.year
+    @visitor_birth_date_reversed = @visitor_birth_date.strftime("%d/%m/%Y")
 
     url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{visitor_birth_date_reversed}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21"
     fortune_serialized = URI.open(url).read
