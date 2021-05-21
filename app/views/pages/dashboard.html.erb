@@ -2,34 +2,23 @@
 <p>Welcome back, <%= @user.email%></p>
 
 <% if current_user.master? %>
+
   <% if @unaccepted_appointments.count != 0 %>
-    <h2>Your requests:</h2>
-    <% @unaccepted_appointments.each do |request| %>
-      <div class="card-product unaccepted">
-        <ul>
-          <li>From: <%= request.user.email %></li>
-          <li>Message: <%= request.message %> </li>
-          <li>For: <%= request.when %> </li>
-          <li><%= link_to "Approve", approve_appointments_user_path(request), method: :patch %></li>
-        </ul>
-      </div>
-    <% end %>
+    <div class="requests mt-3">
+      <h3>Your requests:</h3>
+      <%= render @unaccepted_appointments %>
+    </div>
   <% end %>
+
   <% if @accepted_appointments.count != 0 %>
-    <h2>Your upcoming appointments:</h2>
-    <% @accepted_appointments.each do |request| %>
-      <div class="card-product accepted">
-        <div class="approved-details">
-          <h4><%= request.when %></h4>
-          <ul>
-            <li>From: <%= request.user.email %></li>
-            <li>Message: <%= request.message %> </li>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+    <div class="accepted-requests mt-3">
+      <h3>Upcoming appointments:</h3>
+      <%= render @accepted_appointments %>
+    </div>
   <% end %>
+
 <% else %>
+
   <%= render @preferred_posts %>
   <%= link_to masters_users_path do %>
     <div class="card-product">
@@ -40,6 +29,7 @@
       </div>
     </div>
   <% end %>
+
 <% end %>
 
 
