@@ -19,7 +19,7 @@
                 required: true,
                 as: :date,
                 html5: true,
-                input_html: { value: Date.strptime(@birthdate) }%>
+                input_html: { value: @birthdate.nil? ? "" : Date.strptime(@birthdate) }%>
   </div>
 
   <div class="form-actions">
