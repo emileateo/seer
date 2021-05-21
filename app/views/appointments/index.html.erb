@@ -1,10 +1,15 @@
-
-<% if @unaccepted_appointments.count != 0 %>
-<h2>Your requests:</h2>
-<%= render @unaccepted_appointments %>
-<% end %>
-<% if @accepted_appointments.count != 0 %>
-<h2>Your upcoming appointments:</h2>
-<%= render @accepted_appointments %>
-<% end %>
+<div class="container">
+  <div class="requests mt-3"></div>
+    <% if @unaccepted_appointments.count != 0 %>
+      <h3>Your requests:</h3>
+      <%= render @unaccepted_appointments %>
+    <% end %>
+  </div>
+  <div class="accepted_requests mt-3">
+    <% if @accepted_appointments.count != 0 %>
+      <h3>Upcoming appointments:</h3>
+      <%= render @accepted_appointments %>
+    <% end %>
+  </div>
+</div>
 
