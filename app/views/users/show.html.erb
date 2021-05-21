@@ -1,20 +1,19 @@
 <div class="w3-container">
   <h1> Selected Master Page</h1>
-    <div class="card-product mt-0">
-      <h2>
+  <div class="card-product mt-0">
+    <h2>
       <%= @master.email %>
-      </h2>
-        <ul>
-          <li><Strong>Speciality</Strong> <%= @master.specialty %></li>
-        </ul>
-    </div>
-</div>
-
+    </h2>
+      <ul>
+        <li><Strong>Speciality</Strong> <%= @master.specialty %></li>
+      </ul>
+  </div>
   <div class="form-appointment" >
-    <h3>Interested in a consulation?</h3>
+    <h3>Consultation Details</h3>
         <%= simple_form_for [@master, @appointment], url: appointments_user_path(@master) do |f|%>
         <%= f.input :when, as: :datetime, html5: true %>
         <%= f.input :message %>
-        <%= f.submit 'Submit' %>
+        <%= f.submit 'Submit'%>
       <% end %>
   </div>
+</div>

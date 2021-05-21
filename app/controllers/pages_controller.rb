@@ -13,39 +13,28 @@ class PagesController < ApplicationController
   def preview
     @name = params[:name]
     @birth_date = params[:date]
-    @year = params[:year].to_i
 
-    visitor_birth_date = Time.new(params[:date])
-    visitor_birth_date_reversed = visitor_birth_date.strftime("%d/%m/%Y")
+    @visitor_birth_date = Date.parse(params[:date])
+    @year = @visitor_birth_date.year
+    @visitor_birth_date_reversed = @visitor_birth_date.strftime("%d/%m/%Y")
 
-    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{visitor_birth_date_reversed}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21"
+    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21"
     fortune_serialized = URI.open(url).read
     @fortune = JSON.parse(fortune_serialized)
 
-    if (@year - 2000) % 12 == 0
-        @sign = 'Dragon'
-    elsif (@year - 2000) % 12 == 1
-        @sign = 'Snake'
-    elsif (@year - 2000) % 12 == 2
-        @sign = 'Horse'
-    elsif (@year - 2000) % 12 == 3
-        @sign = 'Sheep'
-    elsif (@year - 2000) % 12 == 4
-        @sign = 'Monkey'
-    elsif (@year - 2000) % 12 == 5
-        @sign = 'Rooster'
-    elsif (@year - 2000) % 12 == 6
-        @sign = 'Dog'
-    elsif (@year - 2000) % 12 == 7
-        @sign = 'Pig'
-    elsif (@year - 2000) % 12 == 8
-        @sign = 'Rat'
-    elsif (@year - 2000) % 12 == 9
-        @sign = 'Ox'
-    elsif (@year - 2000) % 12 == 10
-        @sign = 'Tiger'
-    else
-        @sign = 'Hare'
+    case (@year - 2000) % 12
+    when 0 then @sign = 'Dragon'
+    when 1 then @sign = 'Snake'
+    when 2 then @sign = 'Horse'
+    when 3 then @sign = 'Sheep'
+    when 4 then @sign = 'Monkey'
+    when 5 then @sign = 'Rooster'
+    when 6 then @sign = 'Dog'
+    when 7 then @sign = 'Pig'
+    when 8 then @sign = 'Rat'
+    when 9 then @sign = 'Ox'
+    when 10 then @sign = 'Tiger'
+    when 11 then @sign = 'Hare'
     end
 
     zodiac_url = "https://chinesenewyear.net/zodiac/#{@sign.downcase}/"
@@ -58,9 +47,13 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    @appointments = Appointment.all
     @preferred_posts = current_user.preferred_posts.sample # [P1, P2]
     # @todays_post =
+
+    @appointments = Appointment.all
+
+    @unaccepted_appointments = Appointment.where(status: false)
+    @accepted_appointments = Appointment.where(status: true).order!(:when)
   end
 
   def preferences

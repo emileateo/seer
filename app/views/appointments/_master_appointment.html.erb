@@ -1,0 +1,21 @@
+<% if appointment.status %>
+  <div class="card-product accepted">
+    <div class="approved-details">
+      <h5 class="approved-details-date mx-3"><%= appointment.when %></h5>
+      <ul>
+        <li>With <strong><%= appointment.user.email %></strong></li>
+        <li>Their message: “<%= appointment.message %>” </li>
+      </ul>
+    </div>
+  </div>
+<% else %>
+  <div class="card-product unaccepted">
+    <ul style="list-style-type: none;">
+      <li><strong>From:</strong> <%= appointment.user.email %></li>
+      <li><strong>Their message:</strong> “<em><%= appointment.message %></em>” </li>
+      <li><strong>For:</strong> <%= appointment.when %> </li>
+      <br>
+      <li><%= link_to "Approve", appointment_path(appointment), method: :patch %> </li>
+    </ul>
+  </div>
+<% end %>

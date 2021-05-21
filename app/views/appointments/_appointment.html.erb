@@ -1,0 +1,5 @@
+<% if appointment.user == current_user %>
+  <%= render "user_appointment", appointment: appointment %>
+<% else %>
+  <%= render "appointments/master_appointment", appointment: appointment %>
+<% end %>

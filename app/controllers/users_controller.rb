@@ -1,14 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
-  # def index
-  #   @users = User.where(master: true)
-  #   @master_list = []
-  #   @users.each do |user|
-  #     @master_list << user
-  #   end
-  # end
-
   def masters
     @masters = User.where(master: true)
   end
@@ -35,24 +27,19 @@ class UsersController < ApplicationController
     @appointment.user = current_user
     @appointment.status = false
     if @appointment.save
-      redirect_to root_path, notice: "We\'ve sent a request to #{@appointment.master.email}!"
+      redirect_to dashboard_path, notice: "We\'ve sent a request to #{@appointment.master.email}!"
     else
       render :show
     end
   end
 
-
   private
 
   def appointment_params
-    params.require(:appointment).permit(
-      :message, :when)
+    params.require(:appointment).permit(:message, :when, :id)
   end
 
   def user_params
     params.require(:user).permit(:email, :id, :master, :specialty)
   end
 end
-
-
-
