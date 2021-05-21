@@ -1,15 +1,21 @@
 <div class="container">
-  <div class="requests mt-3">
-    <% if @unaccepted_appointments.count != 0 %>
+  <% if @unaccepted_appointments.count != 0 %>
+    <div class="requests mt-3">
       <h3>Your pending requests:</h3>
       <%= render @unaccepted_appointments %>
-    <% end %>
-  </div>
-  <div class="accepted_requests mt-3">
-    <% if @accepted_appointments.count != 0 %>
+    </div>
+  <% end %>
+
+  <% if @accepted_appointments.count != 0 %>
+    <div class="accepted_requests mt-3">
       <h3>Your confirmed appointments:</h3>
       <%= render @accepted_appointments %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+
+  <% if @unaccepted_appointments.count == 0 && @accepted_appointments.count == 0 %>
+    <h3>You have not created any appointments yet.</h3>
+    <h4><%= link_to "Make one today!", masters_users_path %>
+  <% end %>
 </div>
 
