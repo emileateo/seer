@@ -1,0 +1,19 @@
+{
+  "name": "Seer chrome extension",
+  "version": "1.0",
+  "description": "Get your daily reading!",
+  "manifest_version": 2,
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+    "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/logo.png"
+  }
+}
