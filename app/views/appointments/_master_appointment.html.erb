@@ -1,6 +1,6 @@
 <% if appointment.status %>
-  <div class="card-product accepted">
-    <div class="appointment-details">
+  <div class="card-product appointment-details">
+    <div class="details">
       <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
       <ul>
         <li>With <strong><%= appointment.user.email %></strong></li>
@@ -12,12 +12,15 @@
   </div>
 <% else %>
   <div class="card-product appointment-details">
-    <ul style="list-style-type: none;">
-      <li><strong>From:</strong> <%= appointment.user.email %></li>
-      <li><strong>Their message:</strong> “<em><%= appointment.message %></em>” </li>
-      <li><strong>For:</strong> <%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %> </li>
-      <br>
-      <li><%= link_to "Approve", appointment_path(appointment), method: :delete %> </li>
-    </ul>
+    <div class="details">
+      <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
+      <ul>
+        <li>From <strong><%= appointment.user.email %></strong></li>
+        <li>Their message: “<%= appointment.message %>” </li>
+        <br>
+        <li><%= link_to "Accept this request", appointment_path(appointment), method: :patch %></li>
+        <li><%= link_to "Delete this appointment", appointment_path(appointment), method: :delete %> </li>
+      </ul>
+    </div>
   </div>
 <% end %>
