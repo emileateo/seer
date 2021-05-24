@@ -1,0 +1,49 @@
+/*html {
+  height: 200px;
+}
+*/
+h1 {
+  font-size: 1em;
+  position: fixed;
+  top: 0;
+  margin-top: 10px;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+body {
+  width :200px;
+  min-height: 100vh;
+  height: 200px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button#send-data {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 10px;
+  background: beige;
+  padding: 10px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  color: grey;
+  outline: none !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+#horoscope {
+
+}
