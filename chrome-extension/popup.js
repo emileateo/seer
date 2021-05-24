@@ -5,8 +5,9 @@ function listenClick() {
     // chrome.tabs.executeScript({
     //   file: 'scripts/send-data.js'
     // });
-    fetch('http://localhost:3000/horoscopes/show.json')
-    //change to https://seer-io.herokuapp.com/horoscopes/show.json for heroku
+    fetch('https://seer-io.herokuapp.com/horoscopes/show.json')
+    // http://localhost:3000/horoscopes/show.json for local testing
+    // change to https://seer-io.herokuapp.com/horoscopes/show.json for heroku
       .then(res => res.json())
       .then(data => {
         horoscope.innerText = data.horoscope
