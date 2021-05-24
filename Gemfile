@@ -68,3 +68,6 @@ gem 'zodiac'
 # For soft deleting
 # https://github.com/rubysherpas/paranoia
 gem "paranoia", "~> 2.2"
+
+# For video calls
+gem 'twilio-ruby', '~> 5.54.0'

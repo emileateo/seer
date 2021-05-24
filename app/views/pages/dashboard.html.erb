@@ -18,6 +18,12 @@
     </div>
   <% end %>
 
+  <% if @accepted_appointments.count == 0 && @unaccepted_appointments.count == 0 %>
+    <div class="accepted-requests mt-3">
+      <h3>You have no active appointments.</h3>
+    </div>
+  <% end %>
+
 <% else @user.master %>
 
   <div class="card-product your-lucky d-flex flex-column pt-4 pb-4">
