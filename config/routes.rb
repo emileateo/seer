@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'horoscopes/show'
   # devise_for :users
   devise_for :users, controllers: { registrations: "registrations" }
 

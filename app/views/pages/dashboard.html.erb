@@ -1,5 +1,4 @@
 <h1><%= Date.today.strftime("%A %-d %B") %></h1>
-<% raise %>
 <p>Welcome back, <%= @user.email%></p>
 
 <% if current_user.master? %>
