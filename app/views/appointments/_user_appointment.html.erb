@@ -1,7 +1,7 @@
 <% if appointment.status %>
   <div class="card-product accepted">
-    <div class="approved-details">
-      <h5 class="approved-details-date mx-3"><%= appointment.when %></h5>
+    <div class="appointment-details">
+      <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
       <ul>
         <li>With <strong><%= appointment.master.email %></strong></li>
         <li>Your message: “<%= appointment.message %>” </li>
@@ -9,11 +9,11 @@
     </div>
   </div>
 <% else %>
-  <div class="card-product unaccepted">
+  <div class="card-product appointment-details">
     <ul style="list-style-type: none;">
       <li>Your request to <strong><%= appointment.master.email %></strong> at <%= appointment.created_at %>:</li>
       <br>
-      <li>For <strong><%= appointment.when %></strong></li>
+      <li>For <strong><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></strong></li>
       <li>Your message: “<em><%= appointment.message %></em>” </li>
     </ul>
   </div>

@@ -18,4 +18,10 @@ class AppointmentsController < ApplicationController
     @appointment.save
     redirect_to dashboard_path
   end
+
+  def destroy
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+    redirect_to dashboard_path
+  end
 end

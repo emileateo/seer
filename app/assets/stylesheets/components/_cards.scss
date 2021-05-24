@@ -74,6 +74,29 @@
   padding: 16px;
 }
 
+.card-product.show-master {
+  padding: 16px;
+}
+
+.card-product.show-master h2 {
+  margin-bottom: 8px;
+}
+
+.card-product ul {
+  list-style: none;
+  padding: 0;
+  margin: inherit;
+}
+
+.card-product.accepted {
+  padding: 16px;
+}
+
+.appointment-details ul {
+  list-style: none;
+  padding: 0;
+  margin: inherit;
+}
 
 // .cards {
 //   display: grid;
