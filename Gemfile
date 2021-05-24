@@ -65,6 +65,8 @@ gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'zodiac'
 
+gem 'rack-cors', require:'rack/cors'
+
 # For soft deleting
 # https://github.com/rubysherpas/paranoia
 gem "paranoia", "~> 2.2"
