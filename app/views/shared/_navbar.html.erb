@@ -1,21 +1,34 @@
 <div class="navbar navbar-expand-sm navbar-light">
-  <%= link_to dashboard_path, :class=> "nav-link" do %>
-    <i class="fas fa-home" aria-hidden="true" target="_blank"></i>
-  <% end %>
+  <% if user_signed_in? %>
+    <%= link_to dashboard_path, :class=> "nav-link" do %>
+      <i class="fas fa-home" aria-hidden="true" target="_blank"></i>
+    <% end %>
 
-  <%= link_to "/#", :class=> "nav-link" do %>
-    <i class="fas fa-envelope" aria-hidden="true" target="_blank"></i>
-  <% end %>
+    <%= link_to "/#", :class=> "nav-link" do %>
+      <i class="fas fa-envelope" aria-hidden="true" target="_blank"></i>
+    <% end %>
 
-  <%= link_to dashboard_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png" %>
-  <% end %>
+    <%= link_to dashboard_path, class: "navbar-brand" do %>
+      <%= image_tag "logo.png" %>
+    <% end %>
 
-  <%= link_to appointments_path, :class=> "nav-link" do %>
-    <i class="far fa-calendar-plus" aria-hidden="true" target="_blank"></i>
-  <% end %>
+    <% if current_user.master %>
+      <%= link_to dashboard_path, :class=> "nav-link" do %>
+        <i class="far fa-calendar-plus" aria-hidden="true" target="_blank"></i>
+      <% end %>
+    <% else %>
+      <%= link_to appointments_path, :class=> "nav-link" do %>
+        <i class="far fa-calendar-plus" aria-hidden="true" target="_blank"></i>
+      <% end %>
+    <% end %>
 
-  <%= link_to "/#", :class=> "nav-link" do %>
-    <i class="fas fa-user" aria-hidden="true" target="_blank"></i>
+    <%= link_to destroy_user_session_path, :method => :delete, :class=> "nav-link" do %>
+      <i class="fas fa-user" aria-hidden="true" target="_blank"></i>
+    <% end %>
+
+  <% else %>
+    <%= link_to "/#", class: "navbar-brand" do %>
+      <%= image_tag "logo.png" %>
+    <% end %>
   <% end %>
 </div>
