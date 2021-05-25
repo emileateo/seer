@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'horoscopes/show'
+  get 'horoscopes/show', as: :extension
   # devise_for :users
   devise_for :users, controllers: { registrations: "registrations" }
 
