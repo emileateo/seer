@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :posts, through: :categories, dependent: :destroy
   validates :birthdate, presence: true
 
+  monetize :price_cents
+
   def preferred_posts
     if self.categories.count == 0
       @user_categories = Category.all

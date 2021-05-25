@@ -65,7 +65,7 @@ gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'zodiac'
 
-gem 'rack-cors', require:'rack/cors'
+gem 'rack-cors', require: 'rack/cors'
 
 # For soft deleting
 # https://github.com/rubysherpas/paranoia
@@ -73,3 +73,7 @@ gem "paranoia", "~> 2.2"
 
 # For video calls
 gem 'twilio-ruby', '~> 5.54.0'
+
+# For payment with stripe
+gem 'money-rails'
+gem 'stripe'
