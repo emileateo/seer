@@ -1,7 +1,8 @@
 <h1><%= Date.today.strftime("%A %-d %B") %></h1>
+
 <p>Welcome back, <%= @user.email%></p>
 
-<% if current_user.master? %>
+<% if @user.master? %>
 
   <% if @unaccepted_appointments.count != 0 %>
     <div class="requests mt-3">
@@ -17,7 +18,12 @@
     </div>
   <% end %>
 
-<% else %>
+<% else @user.master %>
+
+  <div class="card-product your-lucky d-flex flex-column pt-4 pb-4">
+    <h2>Your lucky colour: <%= @user.lucky_color.capitalize %></h2>
+    <h2>Your lucky number: <%= @user.lucky_number %></h2>
+  </div>
 
   <%= render @preferred_posts %>
 

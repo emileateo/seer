@@ -1,16 +1,17 @@
 <div class="w3-container">
-  <h1> Selected Master Page</h1>
-  <div class="card-product mt-0">
-    <h2>
-      <%= @master.email %>
-    </h2>
+  <h1>About this Master</h1>
+  <div class="card-product show-master">
+    <div class="master-details">
       <ul>
-        <li><Strong>Speciality</Strong> <%= @master.specialty %></li>
+        <li><h2><%= @master.email %> (b. <%= @master.birthdate.strftime("%Y") %>)</h2></li>
+        <li><Strong>Their speciality:</Strong></li>
+        <li><%= @master.specialty %></li>
       </ul>
+    </div>
   </div>
-  <div class="form-appointment" >
-    <h3>Consultation Details</h3>
-        <%= simple_form_for [@master, @appointment], url: appointments_user_path(@master) do |f|%>
+  <div class="new-appointment-form" >
+    <h3>Consult with this master</h3>
+      <%= simple_form_for [@master, @appointment], url: appointments_user_path(@master) do |f|%>
         <%= f.input :when, as: :datetime, html5: true %>
         <%= f.input :message %>
         <%= f.submit 'Submit'%>
