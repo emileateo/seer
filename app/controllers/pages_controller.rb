@@ -52,7 +52,7 @@ class PagesController < ApplicationController
     @user_zodiac = user_zodiac(@user)
     # raise
 
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=137cde35-f262-50d5-b689-8bea6537d23d&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5&split=true"
     # prediction is for the day itself
     fortune = JSON.parse(URI.open(url).read)
 
@@ -66,6 +66,7 @@ class PagesController < ApplicationController
 
     @unaccepted_appointments = Appointment.where(status: false)
     @accepted_appointments = Appointment.where(status: true).order!(:when)
+
   end
 
   def preferences

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'horoscopes/show', as: :extension
+  get 'loves/show', to: 'loves#show'
+  get 'services/show', to: 'services#show'
+  get 'horoscopes/show', to: 'horoscopes#show'
   # devise_for :users
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: { registrationßs: "registrations" }
 
   root to: 'pages#home'
 
