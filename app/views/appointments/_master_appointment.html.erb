@@ -19,6 +19,7 @@
         <li>Their message: “<%= appointment.message %>” </li>
         <br>
         <li><%= link_to "Accept this request", appointment_path(appointment), method: :patch %></li>
+            <% # I want this link to create a new Stripe checkout session %>
         <li><%= link_to "Delete this appointment", appointment_path(appointment), method: :delete %> </li>
       </ul>
     </div>

@@ -1,3 +1,6 @@
+require 'money-rails'
+require 'stripe'
+
 class AppointmentsController < ApplicationController
   def index
     @user = current_user
@@ -16,8 +19,28 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:id])
-    @appointment.toggle(:status)
+    @appointment.status = true
+    @appointment.payment_status = 'pending'
+
+    @master = @appointment.master
+    @appointment.amount = @master.price
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: @master.email,
+        amount: @master.price_cents,
+        currency: 'sgd',
+        quantity: 1
+      }],
+      success_url: user_url(@master),
+      cancel_url: user_url(@master)
+    )
+
+    @appointment.checkout_session_id = session.id
+
     @appointment.save
+
     redirect_to dashboard_path
   end
 

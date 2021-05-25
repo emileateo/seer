@@ -18,6 +18,7 @@
         <ul>
           <li>With <strong><%= appointment.master.email %></strong></li>
           <li>Your message: “<em><%= appointment.message %></em>” </li>
+          <li><%= link_to "Make payment now", new_appointment_payment_path(appointment) %>
         </ul>
       </div>
     </div>

@@ -77,3 +77,4 @@ gem 'twilio-ruby', '~> 5.54.0'
 # For payment with stripe
 gem 'money-rails'
 gem 'stripe'
+gem 'stripe_event'
