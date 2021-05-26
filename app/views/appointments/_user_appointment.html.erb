@@ -34,6 +34,9 @@
           <li>Your message: “<em><%= appointment.message %></em>” </li>
           <p>Thank you for making payment on <%= appointment.updated_at.strftime("%a %d %b %Y, %l:%M%P") %></p>
         </ul>
+        <%= link_to appointment do  %>
+          <button class="btn btn-ghost">Start video chat</button>
+        <% end %>
       </div>
     </div>
   <% else %>
