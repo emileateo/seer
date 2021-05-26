@@ -70,3 +70,4 @@ gem 'rack-cors', require:'rack/cors'
 # For soft deleting
 # https://github.com/rubysherpas/paranoia
 gem "paranoia", "~> 2.2"
+gem 'cloudinary', '~> 1.16.0'

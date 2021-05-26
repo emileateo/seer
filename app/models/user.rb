@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :categories, through: :preferences, dependent: :destroy
   has_many :posts, through: :categories, dependent: :destroy
   validates :birthdate, presence: true
+  has_one_attached :photo
 
   def preferred_posts
     if self.categories.count == 0

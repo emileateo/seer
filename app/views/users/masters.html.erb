@@ -2,7 +2,12 @@
   <h1>Our Feng Shui Masters</h1>
   <% @masters.each do |master| %>
     <div class="card-product">
-      <%= link_to master.email, master  %>
+      <%= cl_image_tag master.photo.key %>
+      <div class="card-product-infos">
+      <%= link_to master.name, master  %>
+      <p><%= master.email %></p>
+      <p>Speciality: <%= master.specialty %></p>
+    </div>
     </div>
   <% end %>
 </div>

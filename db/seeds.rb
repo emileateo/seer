@@ -27,7 +27,7 @@ puts "Categories created"
 10.times do
   rand_zodiac = rand(1..12).to_s
 
-  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5&split=true"
+  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
   puts url
 
   fortune_serialized = URI.open(url).read
@@ -57,12 +57,13 @@ when "development"
 
   10.times do
     rand_zodiac = rand(1..12).to_s
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
     fortune_serialized = URI.open(url).read
     fortune = JSON.parse(fortune_serialized)
     pp fortune
 
     User.create!(
+      name: Faker::Games::Pokemon.name,
       email: Faker::Internet.email,
       password: "123456",
       categories: Category.all.sample(2),
@@ -74,14 +75,19 @@ when "development"
 
     puts "User created!"
 
+    file = URI.open("https://source.unsplash.com/featured/?face")
 
-    User.create!(
+
+    master = User.create!(
+      name: Faker::Games::Pokemon.name,
       email: Faker::Internet.email,
       password: "123456",
       birthdate: Faker::Date.between_except(from: 10.years.ago, to: 1.year.from_now, excepted: Date.today),
       master: true,
       specialty: Faker::Games::Pokemon.move
     )
+
+    master.photo.attach(io: file, filename: master.name, content_type: 'image/jpg')
 
     puts "Master created!"
   end
