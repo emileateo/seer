@@ -24,10 +24,10 @@ Category.create!(name: "Relationship")
 
 puts "Categories created"
 
-10.times do
+5.times do
   rand_zodiac = rand(1..12).to_s
 
-  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=137cde35-f262-50d5-b689-8bea6537d23d&split=true"
+  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=b98afa2d-8da8-5510-a912-b5b91f6c0a1b&split=true"
   puts url
 
   fortune_serialized = URI.open(url).read
@@ -55,12 +55,13 @@ when "development"
   User.destroy_all
   puts "Development users deleted"
 
-  10.times do
+  5.times do
     rand_zodiac = rand(1..12).to_s
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9ad6241b-9b66-5990-95b1-63654815da21&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=b98afa2d-8da8-5510-a912-b5b91f6c0a1b&split=true"
     fortune = JSON.parse(URI.open(url).read)
 
     User.create!(
+      name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "123456",
       categories: Category.all.sample(2),
@@ -74,8 +75,10 @@ when "development"
 
 
     User.create!(
+      name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "123456",
+      birthdate: Faker::Date.between_except(from: 10.years.ago, to: 1.year.from_now, excepted: Date.today),
       master: true,
       specialty: Faker::Games::Pokemon.move
     )
