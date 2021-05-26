@@ -29,7 +29,7 @@ class AppointmentsController < ApplicationController
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: @master.email,
+        name: @master.name,
         amount: @master.price_cents,
         currency: 'sgd',
         quantity: 1

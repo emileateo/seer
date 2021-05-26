@@ -3,7 +3,7 @@
     <div class="details">
       <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
       <ul>
-        <li>With <strong><%= appointment.user.email %></strong></li>
+        <li>With <strong><%= appointment.user.name %></strong></li>
         <li>Their message: “<em><%= appointment.message %></em>” </li>
         <br>
         <li><%= link_to "Cancel this appointment", appointment_path(appointment), method: :delete %> </li>
@@ -15,7 +15,7 @@
     <div class="details">
       <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
       <ul>
-        <li>With <strong><%= appointment.user.email %></strong></li>
+        <li>With <strong><%= appointment.user.name %></strong></li>
         <li>Their message: “<em><%= appointment.message %></em>” </li>
         <p>User made payment on <%= appointment.updated_at.strftime("%a %d %b %Y, %l:%M%P") %></p>
       </ul>
@@ -26,7 +26,7 @@
     <div class="details">
       <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
       <ul>
-        <li>From <strong><%= appointment.user.email %></strong></li>
+        <li>From <strong><%= appointment.user.name %></strong></li>
         <li>Their message: “<em><%= appointment.message %></em>” </li>
         <br>
         <li><%= link_to "Accept", appointment_path(appointment), method: :patch %> | <%= link_to "Reject", appointment_path(appointment), method: :delete %></li>

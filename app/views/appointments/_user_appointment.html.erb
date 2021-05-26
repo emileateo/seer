@@ -3,7 +3,7 @@
     <div class="details">
       <h5 class="accepted-details-date">Appointment rejected</h5>
       <ul>
-        <li>For <%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %>, with <strong><%= appointment.master.email %></strong></li>
+        <li>For <%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %>, with <strong><%= appointment.master.name %></strong></li>
         <li>Your message: “<em><%= appointment.message %></em>” </li>
         <br>
         <li>Last updated at <%= appointment.deleted_at.strftime("%a %d %b %Y, %l:%M%P") %></li>
@@ -18,7 +18,7 @@
         <h5 class="accepted-details-date">Payment required</h5>
         <ul>
           <li>Appointment on <%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></li>
-          <li>With <strong><%= appointment.master.email %></strong></li>
+          <li>With <strong><%= appointment.master.name %></strong></li>
           <li>Your message: “<em><%= appointment.message %></em>” </li>
           <br>
           <li><%= link_to "Make payment now", new_appointment_payment_path(appointment) %></li>
@@ -30,7 +30,7 @@
       <div class="details">
         <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
         <ul>
-          <li>With <strong><%= appointment.master.email %></strong></li>
+          <li>With <strong><%= appointment.master.name %></strong></li>
           <li>Your message: “<em><%= appointment.message %></em>” </li>
           <p>Thank you for making payment on <%= appointment.updated_at.strftime("%a %d %b %Y, %l:%M%P") %></p>
         </ul>
@@ -39,7 +39,7 @@
   <% else %>
     <div class="card-product appointment-details">
       <ul style="list-style-type: none;">
-        <li>Your request to <strong><%= appointment.master.email %></strong> at <%= appointment.created_at %>:</li>
+        <li>Your request to <strong><%= appointment.master.name %></strong> at <%= appointment.created_at %>:</li>
         <br>
         <li>For <strong><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></strong></li>
         <li>Your message: “<em><%= appointment.message %></em>” </li>
