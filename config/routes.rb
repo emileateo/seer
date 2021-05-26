@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :appointments, only: [:index, :update, :destroy] do
     resources :payments, only: :new
-    resources :videos, only: :show
+    resources :videos, only: :new
   end
 
   get "appointments/:id", to: "appointments#really_destroy", as: :really_destroy_appointment

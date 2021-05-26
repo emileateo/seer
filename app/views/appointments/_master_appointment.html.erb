@@ -17,8 +17,11 @@
       <ul>
         <li>With <strong><%= appointment.user.email %></strong></li>
         <li>Their message: “<em><%= appointment.message %></em>” </li>
-        <p>User made payment on <%= appointment.updated_at.strftime("%a %d %b %Y, %l:%M%P") %></p>
       </ul>
+      <p>User made payment on <%= appointment.updated_at.strftime("%a %d %b %Y, %l:%M%P") %></p>
+      <%= link_to new_appointment_video_path(appointment) do  %>
+      <button class="btn btn-ghost">Start video chat</button>
+      <% end %>
     </div>
   </div>
 <% else %>
