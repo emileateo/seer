@@ -6,4 +6,6 @@ class Appointment < ApplicationRecord
 
   validates :message, presence: true
   validates :when, presence: true
+
+  monetize :amount_cents
 end

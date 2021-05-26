@@ -2,6 +2,8 @@ require 'open-uri'
 require 'nokogiri'
 
 class HoroscopesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
+  
   def show
     horoscope_page = URI::open('https://astrologyk.com/horoscope/chinese/daily').read
     doc = Nokogiri::HTML(horoscope_page)

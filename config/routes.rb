@@ -13,23 +13,22 @@ Rails.application.routes.draw do
     end
     member do
       post :appointments
-      patch :approve_appointments
+      patch :approve_appointments # what is this?
     end
   end
 
-  resources :appointments, only: [:index, :update, :destroy]
+  resources :appointments, only: [:index, :update, :destroy] do
+    resources :payments, only: :new
+  end
 
-  get 'preferences', to: "pages#preferences", as: :preferences # this redirects user after successful sign up
+  get "appointments/:id", to: "appointments#really_destroy", as: :really_destroy_appointment
 
   get 'preview', to: 'pages#preview'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'preferences', to: "pages#preferences", as: :preferences # this redirects user after successful sign up
+
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
 
-  resources :categories, only: [:show]
+  resources :categories, only: [:show] # what is this?
 
-  get 'studiespost', to: 'pages#studiespost', as: :studiespost
-  get 'careerpost', to: 'pages#careerpost', as: :careerpost
-  get 'relationshippost', to: 'pages#relationshippost', as: :relationshippost
-  get 'healthpost', to: 'pages#healthpost', as: :healthpost
-
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
 end

@@ -3,18 +3,22 @@
   <div class="card-product show-master">
     <div class="master-details">
       <ul>
-        <li><h2><%= @master.email %> (b. <%= @master.birthdate.strftime("%Y") %>)</h2></li>
+        <li><h2><%= @master.name %> (b. <%= @master.birthdate.strftime("%Y") %>)</h2></li>
         <li><Strong>Their speciality:</Strong></li>
         <li><%= @master.specialty %></li>
+        <li><Strong>Their price:</Strong></li>
+        <li><%= @master.price %> SGD</li>
       </ul>
     </div>
   </div>
-  <div class="new-appointment-form" >
-    <h3>Consult with this master</h3>
-      <%= simple_form_for [@master, @appointment], url: appointments_user_path(@master) do |f|%>
-        <%= f.input :when, as: :datetime, html5: true %>
-        <%= f.input :message %>
-        <%= f.submit 'Submit'%>
-      <% end %>
+  <div class="W3-container">
+    <div class="new-appointment-form" >
+      <h3>Consult with this master</h3>
+        <%= simple_form_for [@master, @appointment], url: appointments_user_path(@master) do |f|%>
+          <%= f.input :when, as: :datetime, html5: true %>
+          <%= f.input :message %>
+          <%= f.submit 'Submit'%>
+        <% end %>
+    </div>
   </div>
 </div>

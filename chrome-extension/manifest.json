@@ -9,7 +9,8 @@
   },
 
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "*://thinkproxy.freeboard.io/*"
   ],
 
   "browser_action": {
