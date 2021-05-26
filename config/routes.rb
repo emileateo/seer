@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :payments, only: :new
   end
 
+  get "appointments/:id", to: "appointments#really_destroy", as: :really_destroy_appointment
+
   get 'preview', to: 'pages#preview'
   get 'preferences', to: "pages#preferences", as: :preferences # this redirects user after successful sign up
 

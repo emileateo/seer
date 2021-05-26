@@ -1,6 +1,13 @@
+<% flash.each do |type, msg| %>
+  <div class="custom-alert">
+    <%= msg %>
+  </div>
+<% end %>
+
 <h1><%= Date.today.strftime("%A %-d %B") %></h1>
 
 <p>Welcome back, <%= @user.email%></p>
+
 
 <% if @user.master? %>
 

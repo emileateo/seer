@@ -1,24 +1,38 @@
 <% if appointment.deleted_at %>
   <div class="card-product appointment-details">
     <div class="details">
-      <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
+      <h5 class="accepted-details-date">Appointment rejected</h5>
       <ul>
-        <li>With <strong><%= appointment.master.email %></strong></li>
+        <li>For <%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %>, with <strong><%= appointment.master.email %></strong></li>
         <li>Your message: “<em><%= appointment.message %></em>” </li>
-
+        <br>
         <li>Last updated at <%= appointment.deleted_at.strftime("%a %d %b %Y, %l:%M%P") %></li>
+        <li><%= link_to "Acknowledge and delete", really_destroy_appointment_path(appointment) %></li>
       </ul>
     </div>
   </div>
 <% else %>
-  <% if appointment.status %>
+  <% if appointment.payment_status == 'pending' %>
+    <div class="card-product appointment-details">
+      <div class="details">
+        <h5 class="accepted-details-date">Payment required</h5>
+        <ul>
+          <li>Appointment on <%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></li>
+          <li>With <strong><%= appointment.master.email %></strong></li>
+          <li>Your message: “<em><%= appointment.message %></em>” </li>
+          <br>
+          <li><%= link_to "Make payment now", new_appointment_payment_path(appointment) %></li>
+        </ul>
+      </div>
+    </div>
+  <% elsif appointment.payment_status == 'paid' %>
     <div class="card-product appointment-details">
       <div class="details">
         <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
         <ul>
           <li>With <strong><%= appointment.master.email %></strong></li>
           <li>Your message: “<em><%= appointment.message %></em>” </li>
-          <li><%= link_to "Make payment now", new_appointment_payment_path(appointment) %>
+          <p>Thank you for making payment on <%= appointment.updated_at.strftime("%a %d %b %Y, %l:%M%P") %></p>
         </ul>
       </div>
     </div>

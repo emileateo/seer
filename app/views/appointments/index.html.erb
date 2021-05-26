@@ -1,24 +1,30 @@
 <div class="container">
+  <% flash.each do |type, msg| %>
+    <div class="custom-alert">
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <div class="requests mt-3">
+    <% if @accepted_appointments.count != 0 || @deleted_appointments.count != 0 %>
+      <% count = @accepted_appointments.count + @deleted_appointments.count %>
+      <h4><%= count %> <%= "request".pluralize(count) %> <%= count == 1 ? "requires" : "require" %> your action:</h4>
+      <%= render @accepted_appointments %>
+      <%= render @deleted_appointments %>
+    <% end %>
+  </div>
+
+  <% if @confirmed_appointments.count != 0 %>
+    <div class="requests mt-3">
+      <h4>Your confirmed requests:</h4>
+      <%= render @confirmed_appointments %>
+    </div>
+  <% end %>
+
   <% if @unaccepted_appointments.count != 0 %>
     <div class="requests mt-3">
       <h4>Your pending requests:</h4>
       <%= render @unaccepted_appointments %>
-    </div>
-  <% end %>
-
-  <% if @accepted_appointments.count != 0 %>
-    <div class="accepted_requests mt-3">
-      <h4>Your confirmed appointments:</h4>
-      <%= render @accepted_appointments %>
-    </div>
-  <% end %>
-
-  <% if @deleted_appointments.count != 0 %>
-    <div class="accepted_requests mt-3">
-      <h4>Rejected requests:</h4>
-      <%= render @deleted_appointments %>
-      <br>
-      <%= link_to "Make another appointment?", masters_users_path %>
     </div>
   <% end %>
 
