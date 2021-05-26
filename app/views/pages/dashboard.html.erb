@@ -32,7 +32,7 @@
     </div>
   <% end %>
 
-  <% if @accepted_appointments.count == 0 && @unaccepted_appointments.count == 0 %>
+  <% if @appointments.count == 0 %>
     <div class="accepted-requests mt-3">
       <h3>You have no active appointments.</h3>
     </div>
