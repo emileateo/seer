@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'horoscopes/show', to: 'horoscopes#show'
   # devise_for :users
   devise_for :users, controllers: { registrations: "registrations" }
 
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :appointments, only: [:index, :update]
+  resources :appointments, only: [:index, :update, :destroy]
 
   get 'preferences', to: "pages#preferences", as: :preferences # this redirects user after successful sign up
 
