@@ -1,3 +1,18 @@
 .new-appointment-form {
-  margin-top: 32px;
+  background-size: cover;
+  background-color: white;
+  display: Flex;
+  flex-direction: column;
+  text-align: justify;
+  text-align: top;
+  margin-top: 24px;
+  height: 364px;
+  font-weight: bold;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 10px;
+}
+
+.new-appointment-form h4 {
+margin-top: 5px;
 }
