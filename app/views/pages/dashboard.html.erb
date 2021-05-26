@@ -1,24 +1,44 @@
+<% flash.each do |type, msg| %>
+  <div class="custom-alert">
+    <%= msg %>
+  </div>
+<% end %>
+
 <h1><%= Date.today.strftime("%A %-d %B") %></h1>
 
 <p>Welcome back, <%= @user.email%></p>
+
 
 <% if @user.master? %>
 
   <% if @unaccepted_appointments.count != 0 %>
     <div class="requests mt-3">
-      <h3>Your pending requests:</h3>
+      <h3>New <%= "request".pluralize(@unaccepted_appointments.count) %> for you:</h3>
       <%= render @unaccepted_appointments %>
     </div>
   <% end %>
 
   <% if @accepted_appointments.count != 0 %>
     <div class="accepted-requests mt-3">
-      <h3>Your upcoming appointments:</h3>
+      <h3>Appointments pending payment:</h3>
       <%= render @accepted_appointments %>
     </div>
   <% end %>
 
-<% else @user.master %>
+  <% if @confirmed_appointments.count != 0 %>
+    <div class="accepted-requests mt-3">
+      <h3>Your upcoming appointments:</h3>
+      <%= render @confirmed_appointments %>
+    </div>
+  <% end %>
+
+  <% if @appointments.count == 0 %>
+    <div class="accepted-requests mt-3">
+      <h3>You have no active appointments.</h3>
+    </div>
+  <% end %>
+
+<% else %>
 
   <div class="card-product your-lucky d-flex flex-column pt-4 pb-4">
     <h2>Your lucky colour: <%= @user.lucky_color.capitalize %></h2>

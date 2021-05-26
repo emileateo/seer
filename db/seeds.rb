@@ -27,7 +27,7 @@ puts "Categories created"
 5.times do
   rand_zodiac = rand(1..12).to_s
 
-  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=b98afa2d-8da8-5510-a912-b5b91f6c0a1b&split=true"
+  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5&split=true"
   puts url
 
   fortune_serialized = URI.open(url).read
@@ -57,7 +57,7 @@ when "development"
 
   5.times do
     rand_zodiac = rand(1..12).to_s
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=b98afa2d-8da8-5510-a912-b5b91f6c0a1b&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5&split=true"
     fortune = JSON.parse(URI.open(url).read)
 
     User.create!(

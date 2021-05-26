@@ -1,0 +1,23 @@
+<div class="col">
+  <h1>Checkout summary</h1>
+  <h4>Here are the details of your appointment:</h4>
+  <div class="confirmed-details">
+    <h5>Consultation with <strong><%= @appointment.master.email %></strong></h5>
+    <p>Date: <strong><%= @appointment.when.strftime("%a, %d/%m/%Y") %></strong></p>
+    <p>Time: <strong><%= @appointment.when.strftime("%l:%M%P") %></strong></p>
+    <p>Your message: “<em><%= @appointment.message %></em>”</p>
+    <p>Total price: <strong><%= humanized_money_with_symbol @appointment.amount %></strong></p>
+  </div>
+  <button id="pay" class="btn btn-ghost">Confirm – Make payment</button>
+  <p><small><em>Payment on our site is made secure through Stripe.</em></small></p>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const paymentButton = document.getElementById('pay');
+    paymentButton.addEventListener('click', () => {
+      const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+      stripe.redirectToCheckout({
+        sessionId: '<%= @appointment.checkout_session_id %>'
+      });
+    });
+  </script>
+</div>

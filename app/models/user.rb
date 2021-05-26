@@ -5,8 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :preferences, dependent: :destroy
   has_many :categories, through: :preferences, dependent: :destroy
+  has_many :appointments
   has_many :posts, through: :categories, dependent: :destroy
   validates :birthdate, presence: true
+
+  monetize :price_cents
 
   def preferred_posts
     if self.categories.count == 0
