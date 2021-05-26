@@ -2,7 +2,7 @@
   <h1>Checkout summary</h1>
   <h4>Here are the details of your appointment:</h4>
   <div class="confirmed-details">
-    <h5>Consultation with <strong><%= @appointment.master.email %></strong></h5>
+    <h5>Consultation with <strong><%= @appointment.master.name %></strong></h5>
     <p>Date: <strong><%= @appointment.when.strftime("%a, %d/%m/%Y") %></strong></p>
     <p>Time: <strong><%= @appointment.when.strftime("%l:%M%P") %></strong></p>
     <p>Your message: “<em><%= @appointment.message %></em>”</p>
