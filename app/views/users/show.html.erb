@@ -5,7 +5,7 @@
         <li><h1><%= @master.name %></h1><li>
         <li><h2>(b. <%= @master.birthdate.strftime("%Y") %>)</h2></li>
         <br>
-        <li><strong>About:</strong></li>
+        <li><strong>Speciality:</strong></li>
         <li><%= @master.specialty %></li>
         <br>
         <li><Strong>Consulation price:</Strong></li>
@@ -18,7 +18,7 @@
       <h4>Book a Consultation</h4>
         <%= simple_form_for [@master, @appointment], url: appointments_user_path(@master) do |f|%>
           <%= f.input :when, as: :datetime, html5: true %>
-          <%= f.input :message, input_html: {style: 'height:100px;'}  %>
+          <%= f.input :message, as: :text, input_html: {style: 'height:100px;'}  %>
           <%= f.submit 'Submit'%>
         <% end %>
     </div>
