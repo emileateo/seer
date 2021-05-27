@@ -28,7 +28,6 @@ puts "Categories created"
   rand_zodiac = rand(1..12).to_s
 
   url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
-
   puts url
 
   fortune_serialized = URI.open(url).read
@@ -59,12 +58,11 @@ when "development"
   5.times do
     rand_zodiac = rand(1..12).to_s
     url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
-    fortune_serialized = URI.open(url).read
-    fortune = JSON.parse(fortune_serialized)
+    fortune = JSON.parse(URI.open(url).read)
     pp fortune
 
     User.create!(
-      name: Faker::Games::Pokemon.name,
+      name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "123456",
       categories: Category.all.sample(2),
@@ -79,7 +77,7 @@ when "development"
     file = URI.open("https://source.unsplash.com/featured/?face")
 
     master = User.create!(
-      name: Faker::Games::Pokemon.name,
+      name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "123456",
       birthdate: Faker::Date.between_except(from: 10.years.ago, to: 1.year.from_now, excepted: Date.today),
