@@ -30,11 +30,6 @@ const newParticipant = (participant) => {
   participant.on('trackSubscribed', subscribeTrack);
 }
 
-const stopButton = document.querySelector('.stop-button')
-stopButton.addEventListener("click", (event) => {
-  disconnectParticipant()
-});
-
 const disconnectParticipant = (participant) => {
   roomObj.disconnect(participant);
   console.log(`You have been disconnected`);
@@ -77,6 +72,10 @@ const initTwilioVideo = () => {
   const videoContainer = document.querySelector('.video-container');
 
   if (videoContainer) {
+    const stopButton = document.querySelector('.stop-button')
+    stopButton.addEventListener("click", (event) => {
+      disconnectParticipant()
+    });
     const { accessToken, roomName } = videoContainer.dataset;
 
     connect(accessToken, {
