@@ -27,7 +27,7 @@ puts "Categories created"
 5.times do
   rand_zodiac = rand(1..12).to_s
 
-  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
+  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}&split=true"
   puts url
 
   fortune_serialized = URI.open(url).read
@@ -49,6 +49,7 @@ end
 
 
 case Rails.env
+
 when "development"
   Appointment.destroy_all
   puts "Development appointments deleted"
@@ -57,7 +58,7 @@ when "development"
 
   5.times do
     rand_zodiac = rand(1..12).to_s
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}&split=true"
     fortune = JSON.parse(URI.open(url).read)
     pp fortune
 

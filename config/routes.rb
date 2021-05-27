@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :appointments, only: [:index, :show, :update, :destroy] do
+  resources :appointments, only: [:index, :update, :show, :destroy] do
     resources :payments, only: :new
   end
 

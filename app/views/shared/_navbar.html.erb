@@ -1,5 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light">
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <div class="navbar navbar-expand-sm navbar-light">
     <%= link_to dashboard_path, :class=> "nav-link" do %>
       <i class="fas fa-home" aria-hidden="true" target="_blank"></i>
     <% end %>
@@ -25,10 +25,5 @@
     <%= link_to destroy_user_session_path, :method => :delete, :class=> "nav-link" do %>
       <i class="fas fa-user" aria-hidden="true" target="_blank"></i>
     <% end %>
-
-  <% else %>
-    <%= link_to "/#", class: "navbar-brand" do %>
-      <%= image_tag "logo.png" %>
-    <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

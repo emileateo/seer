@@ -3,6 +3,7 @@ require 'stripe'
 
 class AppointmentsController < ApplicationController
   def index
+    redirect_to dashboard_path if current_user.master
     @user = current_user
     @all_appointments = Appointment.with_deleted.where(user: @user)
     @unaccepted_appointments = Appointment.where(status: false, user: @user).order(when: :desc)
@@ -46,6 +47,9 @@ class AppointmentsController < ApplicationController
     else
       redirect_to appointments_path, notice: 'You are not authorized to see this appointment.'
     end
+  end
+
+  def edit
   end
 
   def update
