@@ -68,8 +68,7 @@ class AppointmentsController < ApplicationController
         currency: 'sgd',
         quantity: 1
       }],
-      # livemode: false,
-      success_url: user_url(@master),
+      success_url: appointments_url,
       cancel_url: user_url(@master)
     )
 

@@ -10,7 +10,6 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @name = params[:name]
     @birth_date = params[:birthdate]
-    raise
     super
   end
 

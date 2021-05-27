@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def preview
+    api_key = '0a16020e-d9b1-527a-8a17-f47fd62bec4e'
     @name = params[:name]
     @birth_date = params[:date]
 
@@ -19,7 +20,7 @@ class PagesController < ApplicationController
     @year = @visitor_birth_date.year
     @visitor_birth_date_reversed = @visitor_birth_date.strftime("%d/%m/%Y")
 
-    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}"
+    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=#{api_key}"
     fortune_serialized = URI.open(url).read
     @fortune = JSON.parse(fortune_serialized)
 
@@ -47,12 +48,13 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    api_key = '0a16020e-d9b1-527a-8a17-f47fd62bec4e'
     @user = current_user
     @user.master = false unless @user.master
     @user_zodiac = user_zodiac(@user)
     # raise
 
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{api_key}&split=true"
 
     # prediction is for the day itself
     fortune = JSON.parse(URI.open(url).read)
