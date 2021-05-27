@@ -69,9 +69,9 @@ class PagesController < ApplicationController
     @accepted_appointments = Appointment.where(status: true).order!(:when)
 
     if @user.master
-      @unaccepted_appointments = Appointment.where(status: false, master: @user).order(when: :desc)
-      @accepted_appointments = Appointment.where(status: true, master: @user, payment_status: 'pending').order(when: :desc)
-      @confirmed_appointments = Appointment.where(payment_status: 'paid', master: @user).order(when: :desc)
+      @unaccepted_appointments = Appointment.where(status: false, master: @user).order(when: :asc)
+      @accepted_appointments = Appointment.where(status: true, master: @user, payment_status: 'pending').order(when: :asc)
+      @confirmed_appointments = Appointment.where(payment_status: 'paid', master: @user).order(when: :asc)
     end
 
   end
