@@ -1,4 +1,5 @@
 <h1>What are you interested in?</h1>
+<p>Select a few topics to customize your daily fortune reading.</p>
 
 <!-- input_html: { class: "category-selector" }, -->
 <!-- item_wrapper_class: 'category-item' -->
@@ -9,7 +10,8 @@
               label: false,
               as: :check_boxes,
               input_html: { class: "category-selector" } %>
-  <%= f.submit 'Submit' %>
+  <%= f.button :submit, 'Submit This Form', class: 'btn btn-ghost' %>
+  <%= link_to 'Skip for now', dashboard_path %>
 <% end %>
 
-<%= link_to 'Skip', dashboard_path %>
+
