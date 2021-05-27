@@ -1,5 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
+    raise
+
     super
     # raise
   end

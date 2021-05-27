@@ -27,11 +27,7 @@ puts "Categories created"
 5.times do
   rand_zodiac = rand(1..12).to_s
 
-<<<<<<< HEAD
   url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
-=======
-  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5&split=true"
->>>>>>> master
   puts url
 
   fortune_serialized = URI.open(url).read
@@ -53,6 +49,7 @@ end
 
 
 case Rails.env
+
 when "development"
   Appointment.destroy_all
   puts "Development appointments deleted"
@@ -61,21 +58,12 @@ when "development"
 
   5.times do
     rand_zodiac = rand(1..12).to_s
-<<<<<<< HEAD
     url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
-    fortune_serialized = URI.open(url).read
-    fortune = JSON.parse(fortune_serialized)
+    fortune = JSON.parse(URI.open(url).read)
     pp fortune
 
     User.create!(
-      name: Faker::Games::Pokemon.name,
-=======
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5&split=true"
-    fortune = JSON.parse(URI.open(url).read)
-
-    User.create!(
       name: Faker::Name.name,
->>>>>>> master
       email: Faker::Internet.email,
       password: "123456",
       categories: Category.all.sample(2),
@@ -89,14 +77,8 @@ when "development"
 
     file = URI.open("https://source.unsplash.com/featured/?face")
 
-<<<<<<< HEAD
-
     master = User.create!(
-      name: Faker::Games::Pokemon.name,
-=======
-    User.create!(
       name: Faker::Name.name,
->>>>>>> master
       email: Faker::Internet.email,
       password: "123456",
       birthdate: Faker::Date.between_except(from: 10.years.ago, to: 1.year.from_now, excepted: Date.today),
