@@ -7,7 +7,7 @@
     <%= f.input :name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "name" }%>
+                input_html: { value: @name.nil? ? "" : @name } %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -23,7 +23,7 @@
                 required: true,
                 as: :date,
                 html5: true,
-                input_html: { value: @birthdate.nil? ? "" : Date.strptime(@birthdate) }%>
+                input_html: { value: @birth_date.nil? ? "" : Date.strptime(@birth_date) }%>
     <%= f.input :photo, as: :file %>
   </div>
 
