@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'loves/show', to: 'loves#show'
+  get 'services/show', to: 'services#show'
   get 'horoscopes/show', to: 'horoscopes#show'
   # devise_for :users
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: { registrationßs: "registrations" }
 
   root to: 'pages#home'
 
@@ -15,11 +17,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :appointments, only: [:index, :update, :destroy] do
+  resources :appointments, only: [:index, :show, :update, :destroy] do
     resources :payments, only: :new
   end
 
-  get "appointments/:id", to: "appointments#really_destroy", as: :really_destroy_appointment
+  get "appointments/:id/really_destroy", to: "appointments#really_destroy", as: :really_destroy_appointment
 
   get 'preview', to: 'pages#preview'
   get 'preferences', to: "pages#preferences", as: :preferences # this redirects user after successful sign up

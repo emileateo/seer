@@ -11,7 +11,10 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <!-- <script src="https://kit.fontawesome.com/9caf95a650.js" crossorigin="anonymous"></script> -->
-
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <%= render 'shared/ios_pwa_links' %>
     <script src="//sdk.twilio.com/js/video/releases/2.8.0/twilio-video.min.js"></script> <!-- video chat -->
   </head>
 

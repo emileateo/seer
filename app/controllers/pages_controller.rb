@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     @year = @visitor_birth_date.year
     @visitor_birth_date_reversed = @visitor_birth_date.strftime("%d/%m/%Y")
 
-    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5"
+    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=#{ENV["API_KEY"]}"
     fortune_serialized = URI.open(url).read
     @fortune = JSON.parse(fortune_serialized)
 
@@ -52,7 +52,8 @@ class PagesController < ApplicationController
     @user_zodiac = user_zodiac(@user)
     # raise
 
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=9fc5dbe0-8f57-5dc1-8290-ec4ebb99abe5&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
+
     # prediction is for the day itself
     fortune = JSON.parse(URI.open(url).read)
 
@@ -64,11 +65,15 @@ class PagesController < ApplicationController
 
     @appointments = Appointment.all
 
+    @unaccepted_appointments = Appointment.where(status: false)
+    @accepted_appointments = Appointment.where(status: true).order!(:when)
+
     if @user.master
-      @unaccepted_appointments = Appointment.where(status: false, master: @user).order(when: :desc)
-      @accepted_appointments = Appointment.where(status: true, master: @user, payment_status: 'pending').order(when: :desc)
-      @confirmed_appointments = Appointment.where(payment_status: 'paid', master: @user).order(when: :desc)
+      @unaccepted_appointments = Appointment.where(status: false, master: @user).order(when: :asc)
+      @accepted_appointments = Appointment.where(status: true, master: @user, payment_status: 'pending').order(when: :asc)
+      @confirmed_appointments = Appointment.where(payment_status: 'paid', master: @user).order(when: :asc)
     end
+
   end
 
   def preferences

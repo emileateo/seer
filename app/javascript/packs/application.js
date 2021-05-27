@@ -26,23 +26,8 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import initTwilioVideo from '../plugins/twilio-video';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  initTwilioVideo();
 });
-
-// Following code is for twilio video chat
-
-// const { connect } = require('twilio-video');
-
-// connect('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzNjMmMzODYzY2I1M2YwNjMwNTM3NWM0OWY1OGUzODlkLTE2MjE4NDA5NzUiLCJpc3MiOiJTSzNjMmMzODYzY2I1M2YwNjMwNTM3NWM0OWY1OGUzODlkIiwic3ViIjoiQUNlNDM5OWEyNzNjNGNhZjY0ZWYxZjYwMDA0Njg4MGVmMCIsImV4cCI6MTYyMTg0NDU3NSwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiQ29uc3VsdGF0aW9uIiwidmlkZW8iOnt9fX0.XJyRCmGscBLbR7JwZVd2VqsGQ37zMQ4YNttLeJR-fjY', { name:'Consultation' }).then(room => {
-//   console.log(`Successfully joined a Room: ${room}`);
-//   room.on('participantConnected', participant => {
-//     console.log(`A remote Participant connected: ${participant}`);
-//   });
-// }, error => {
-//   console.error(`Unable to connect to Room: ${error.message}`);
-// });
-
