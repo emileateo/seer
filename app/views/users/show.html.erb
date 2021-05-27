@@ -1,6 +1,7 @@
 <div class="w3-container">
   <h1>About this Master</h1>
   <div class="card-product show-master">
+    <%= cl_image_tag @master.photo.key %>
     <div class="master-details">
       <ul>
         <li><h2><%= @master.name %> (b. <%= @master.birthdate.strftime("%Y") %>)</h2></li>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'services/show', to: 'services#show'
   get 'horoscopes/show', to: 'horoscopes#show'
   # devise_for :users
-  devise_for :users, controllers: { registrationßs: "registrations" }
+  devise_for :users, controllers: { registrations: "registrations" }
 
   root to: 'pages#home'
 
