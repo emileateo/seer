@@ -7,17 +7,30 @@
   transform: scale(0);
 }
 
+.check_boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.check_boxes legend {
+  display: none;
+}
+
 .category-selector + label {
   cursor: pointer;
-  display: inline-block;
+  // display: inline-block;
+  text-align: center;
+  padding-top: 33%;
   // font-size: 0.7rem;
-  border-radius: 50rem;
-  padding: 0.1rem 0.5rem;
+  width: 80%;
+  height: 10rem;
+  border-radius: 1rem;
+  // padding: 1rem 2rem;
   background-color: #ECEAFF;
   color: #7E73FF;
   border: 1px solid #7E73FF;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
+  // margin-right: 0.6rem;
+  margin-bottom: 2rem;
 }
 
 .category-selector:checked + label {

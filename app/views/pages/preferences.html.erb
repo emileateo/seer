@@ -6,7 +6,10 @@
 <%= simple_form_for(@user) do |f| %>
   <%= f.input :preferences,
               collection: @categories,
+              label: false,
               as: :check_boxes,
               input_html: { class: "category-selector" } %>
-  <%= f.submit %>
+  <%= f.submit 'Submit' %>
 <% end %>
+
+<%= link_to 'Skip', dashboard_path %>
