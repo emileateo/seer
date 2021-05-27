@@ -1,6 +1,7 @@
 import { connect } from 'twilio-video';
 
 let roomObj;
+
 const attachTrackToPublication = (publication) => {
   const room = document.querySelector('#twilio-room');
 
@@ -29,11 +30,14 @@ const newParticipant = (participant) => {
   participant.on('trackSubscribed', subscribeTrack);
 }
 
-const handleRoomCreation = (room) => {
-  roomObj = room;
-  roomObj.on('participantConnected', connectParticipant, error => {
-    console.error(`Unable to connect to Room: ${error.message}`);
-  });
+const stopButton = document.querySelector('.stop-button')
+stopButton.addEventListener("click", (event) => {
+  disconnectParticipant()
+});
+
+const disconnectParticipant = (participant) => {
+  roomObj.disconnect(participant);
+  console.log(`You have been disconnected`);
 
   roomObj.on('disconnected', room => {
   // Detach the local media elements
@@ -43,8 +47,30 @@ const handleRoomCreation = (room) => {
       attachedElements.forEach(element => element.remove());
     });
   });
+}
+
+const handleRoomCreation = (room) => {
+  roomObj = room;
+
+  // Log your Client's LocalParticipant in the Room
+  const localParticipant = roomObj.localParticipant;
+  console.log(`Connected to the Room as LocalParticipant "${localParticipant.identity}"`);
+
+  // Log any Participants already connected to the Room
+  roomObj.participants.forEach(participant => {
+    console.log(`Participant "${participant.identity}" is connected to the Room`);
+  });
+
+  roomObj.on('participantConnected', connectParticipant, error => {
+    console.error(`Unable to connect to Room: ${error.message}`);
+  });
 
   roomObj.participants.forEach(newParticipant);
+
+  // Log Participants as they disconnect from the Room
+  roomObj.once('participantDisconnected', participant => {
+    console.log(`Participant "${participant.identity}" has disconnected from the Room`);
+  });
 }
 
 const initTwilioVideo = () => {
