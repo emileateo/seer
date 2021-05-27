@@ -3,11 +3,10 @@
     <%= msg %>
   </div>
 <% end %>
+<h1>Welcome,</h1>
+<h1><strong><%= @user.name%></strong></h1>
 
-<h1><%= Date.today.strftime("%A %-d %B") %></h1>
-
-<p>Welcome back, <%= @user.name%></p>
-
+<p><strong>Today:</strong> <%= Date.today.strftime("%A %-d %B") %></p>
 
 <% if @user.master? %>
 
@@ -51,7 +50,8 @@
     <div class="card-product">
       <%= image_tag 'fortuneteller.jpg' %>
       <div class="card-product-infos">
-        <h2>View upcoming appointments</h2>
+        <h2>Appointments</h2>
+        <p>View your next appointments and get those questions ready!</p>
       </div>
     </div>
   <% end %>
@@ -60,7 +60,8 @@
     <div class="card-product">
       <%= image_tag 'crystalball.jpg' %>
       <div class="card-product-infos">
-        <h2>Browse our services</h2>
+        <h2>Services</h2>
+        <p>Seer has a range of services available to choose from</p>
       </div>
     </div>
   <% end %>
@@ -70,7 +71,7 @@
       <%= image_tag 'fortuneteller.jpg' %>
       <div class="card-product-infos">
         <h2>Book a service</h2>
-        <p>Consult a professional fortune teller</p>
+        <p>Sometimes you just need some more information. Consult a professional.</p>
       </div>
     </div>
   <% end %>
