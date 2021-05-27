@@ -1,5 +1,6 @@
 <div class="w3-container">
   <div class="card-product show-master">
+    <%= cl_image_tag @master.photo.key %>
     <div class="master-details">
       <ul>
         <li><h1><%= @master.name %></h1><li>
