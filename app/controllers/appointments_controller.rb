@@ -3,6 +3,7 @@ require 'stripe'
 
 class AppointmentsController < ApplicationController
   def index
+    redirect_to dashboard_path if current_user.master
     @user = current_user
     @all_appointments = Appointment.with_deleted.where(user: @user)
     @unaccepted_appointments = Appointment.where(status: false, user: @user).order(when: :desc)
@@ -15,7 +16,40 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    # @appointments =
+    @appointment = Appointment.find(params[:id])
+
+    if @appointment.user == current_user || @appointment.master == current_user
+      if @appointment.payment_status == 'paid'
+        @master = @appointment.master
+        @user = @appointment.user
+        @room_name = "#{@master.email} x #{@user.email}"
+
+        # Required for any Twilio Access Token
+        account_sid = ENV['TWILIO_ACCOUNT_SID']
+        api_key = ENV['TWILIO_API_KEY_SID']
+        api_secret = ENV['TWILIO_API_SECRET']
+
+        identity = current_user.email
+
+        # Create an Access Token
+        token = Twilio::JWT::AccessToken.new(account_sid, api_key, api_secret, [], identity: identity)
+
+        # Create Video grant for our token
+        grant = Twilio::JWT::AccessToken::VideoGrant.new
+        grant.room = @room_name
+        token.add_grant(grant)
+
+        # Generate the token
+        @access_token = token.to_jwt
+      else
+        redirect_to appointments_path, notice: 'This appointment has not been paid for yet.'
+      end
+    else
+      redirect_to appointments_path, notice: 'You are not authorized to see this appointment.'
+    end
+  end
+
+  def edit
   end
 
   def update

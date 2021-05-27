@@ -1,7 +1,7 @@
 <div class="card-product">
   <%= image_tag 'fortune1.jpg' %>
   <div class="card-product-infos">
-    <h2>Your <%= post.category.name.downcase %> fortune of the day</h2>
+    <h2>Daily <%= post.category.name.capitalize %> fortune</h2>
     <p><%= post.description %></p>
   </div>
 </div>
