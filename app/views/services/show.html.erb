@@ -1,0 +1,19 @@
+  <div class="card-product">
+    <%= image_tag 'rose.jpg' %>
+    <div class="card-product-infos">
+      <h2>Love compatibility analysis</h2>
+          <div class="new-user-form">
+            <form name="new_user_form" novalidate="" action="/loves/show" class="user-input-form">
+            <div class="user-data info">
+            <span> My other half's birthdate is...&nbsp;</span>
+            <input required="" type="date" placeholder="dd-mm-yyyy" pattern="\d\d-\d\d-\d\d\d\d" min="01-01-1500" max="12-31-2500" name="date" value="">
+          </div>
+          <div class="header-btns">
+            <input type="submit" class="button mt-2" value="Get a reading">
+        <!-- gives params 'date' -->
+          </div>
+          </form>
+        </div>
+    </div>
+  </div>
+

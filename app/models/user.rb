@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :appointments
   has_many :posts, through: :categories, dependent: :destroy
   validates :birthdate, presence: true
+  has_one_attached :photo
 
   monetize :price_cents
 
