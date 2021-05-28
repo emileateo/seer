@@ -8,7 +8,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :preview]
 
   def home
-    redirect_to dashboard_path if user_signed_in?
+    if user_signed_in?
+      redirect_to dashboard_path
+    else
+      render layout: 'application2'
+    end
   end
 
   def preview
@@ -57,6 +61,7 @@ class PagesController < ApplicationController
       description: todays_fortune["response"]["bot_response"][post_category.name.downcase]["split_response"],
       category: post_category
     )
+    render layout: 'application2'
   end
 
   def dashboard

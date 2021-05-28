@@ -1,0 +1,32 @@
+.preview-intro {
+  margin-top: 32px
+}
+
+.circle {
+  width: 340px;
+  height: 340px;
+  border: 3px solid #FB9474;
+  border-radius: 100%;
+  display: inline-block;
+  shape-outside: circle();
+}
+
+.preview-fortune-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-content: center;
+}
+
+.preview-fortune {
+  margin: 0 16px 0 16px;
+  // border: 1px dashed #432547
+  align-text: center;
+  padding: 100px 12px 0 12px;
+}
+
+.preview-user-info .card-product-infos h2 {
+  font-weight: lighter;
+  color: pink;
+}
+
