@@ -4,6 +4,12 @@ require 'zodiac'
 require 'date'
 
 class LovesController < ApplicationController
+ def index
+ end
+
+
+
+
   def show
     @lover_birth_date = params[:date]
     @lover_birth_date_parsed = Date.parse(@lover_birth_date)

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  get 'loves/index', to: 'loves#index'
   get 'loves/show', to: 'loves#show'
+  get 'services/index', to: 'services#index'
   get 'services/show', to: 'services#show'
   get 'horoscopes/show', to: 'horoscopes#show'
   # devise_for :users
