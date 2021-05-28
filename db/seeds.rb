@@ -77,7 +77,6 @@ when "development"
 
     file = URI.open("https://source.unsplash.com/featured/?face")
 
-
     master = User.create!(
       name: Faker::Name.name,
       email: Faker::Internet.email,
