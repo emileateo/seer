@@ -14,11 +14,11 @@
 
     <% if current_user.master %>
       <%= link_to dashboard_path, :class=> "nav-link" do %>
-        <i class="far fa-calendar-plus" aria-hidden="true" target="_blank"></i>
+        <i class="far fa-calendar" aria-hidden="true" target="_blank"></i>
       <% end %>
     <% else %>
       <%= link_to appointments_path, :class=> "nav-link" do %>
-        <i class="far fa-calendar-plus" aria-hidden="true" target="_blank"></i>
+        <i class="far fa-calendar" aria-hidden="true" target="_blank"></i>
       <% end %>
     <% end %>
 
