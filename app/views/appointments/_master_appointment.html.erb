@@ -16,7 +16,7 @@
       <h5 class="accepted-details-date"><%= appointment.when.strftime("%a %d %b %Y, %l:%M%P") %></h5>
       <ul>
         <li>With <strong><%= appointment.user.name %></strong></li>
-        <li>Their message: “<em><%= appointment.message %></em>” </li>
+        <li>Their message:<br>“<em><%= appointment.message %></em>” </li>
       </ul>
       <p>User made payment on <%= appointment.updated_at.strftime("%a %d %b %Y, %l:%M%P") %></p>
       <%= link_to appointment do  %>
