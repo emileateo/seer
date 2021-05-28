@@ -16,7 +16,6 @@ class PagesController < ApplicationController
   end
 
   def preview
-    api_key = '74740b9d-27b4-5322-b45c-b37be2586038'
     @name = params[:name]
     @birth_date = params[:date]
 
@@ -24,7 +23,7 @@ class PagesController < ApplicationController
     @year = @visitor_birth_date.year
     @visitor_birth_date_reversed = @visitor_birth_date.strftime("%d/%m/%Y")
 
-    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=#{api_key}"
+    url = "https://api.vedicastroapi.com/json/prediction/numerology?name=#{params[:name]}&show_same=true&date=#{@visitor_birth_date_reversed}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}"
     fortune_serialized = URI.open(url).read
     @fortune = JSON.parse(fortune_serialized)
 
@@ -50,7 +49,7 @@ class PagesController < ApplicationController
     # parsed_content = html_doc.search('.article-content.page-section p').first
     # @parsed_text = parsed_content.text.strip
 
-    todays_reading = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{(@year - 2000) % 12 + 1}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{api_key}&split=true"
+    todays_reading = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{(@year - 2000) % 12 + 1}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}&split=true"
 
     todays_fortune = JSON.parse(URI.open(todays_reading).read)
 
@@ -65,13 +64,12 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    api_key = '74740b9d-27b4-5322-b45c-b37be2586038'
     @user = current_user
     @user.master = false unless @user.master
     @user_zodiac = user_zodiac(@user)
     # raise
 
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{api_key}&split=true"
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{@user_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}&split=true"
 
     # prediction is for the day itself
     fortune = JSON.parse(URI.open(url).read)
