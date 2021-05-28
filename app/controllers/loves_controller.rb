@@ -11,12 +11,11 @@ class LovesController < ApplicationController
 
 
   def show
-    api_key = '74740b9d-27b4-5322-b45c-b37be2586038'
     @lover_birth_date = params[:date]
     @lover_birth_date_parsed = Date.parse(@lover_birth_date)
     @lover_zodiac = lover_zodiac(@lover_birth_date_parsed)
 
-    url = "https://api.vedicastroapi.com/json/matching/western?boy_sign=#{@user_zodiac}&girl_sign=#{@lover_zodiac}&api_key=#{api_key}"
+    url = "https://api.vedicastroapi.com/json/matching/western?boy_sign=#{@user_zodiac}&girl_sign=#{@lover_zodiac}&api_key=#{ENV["ASTRO_API_KEY"]}"
 
     love_compatibility = JSON.parse(URI.open(url).read)
 
