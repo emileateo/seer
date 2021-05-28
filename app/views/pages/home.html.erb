@@ -1,28 +1,29 @@
-<div class="landing-text">
-  <div class="title">
-    <h1>Seer</h1>
-    <h2>Take destiny into your hands.</h2>
+<div class="landing">
+  <div class="landing-text">
+    <div class="title">
+      <h1>Seer</h1>
+      <h2>Take destiny into your hands.</h2>
+    </div>
+    <p>Get in touch with the Earth.<br>Make your own story.</p>
   </div>
 
-  <p>Get in touch with the Earth on your own terms.<br>Make your own story.</p>
-</div>
-
-<div class="new-user-form">
-  <form name="new_user_form" novalidate="" action="/preview" class="user-input-form">
-    <div class="user-data info">
-      <span>&nbsp;My name is&nbsp;</span>
-      <input required="" type="text" placeholder="Name" name="name" id="name" value="">&nbsp;
-    </div>
-    <div class="user-data info">
-      <span> I was born on&nbsp;</span>
-      <input required="" type="date" placeholder="dd-mm-yyyy" pattern="\d\d-\d\d-\d\d\d\d" min="01-01-1500" max="12-31-2500" name="date" value="">
-    </div>
-    <div class="header-btns">
-      <input type="submit" class="button mt-2" value="Get a reading">
-      <!-- gives params 'name' and 'birthdate' -->
-    </div>
-  </form>
-  <small class="existing-user-login"><%= link_to 'Log in', new_user_session_path %></small>
+  <div class="new-user-form">
+    <form name="new_user_form" novalidate="" action="/preview" class="user-input-form">
+      <div class="user-data info">
+        <span>&nbsp;My name is<br></span>
+        <input required="" type="text" placeholder="Name" name="name" id="name" value="">
+      </div>
+      <div class="user-data info">
+        <span> I was born on<br></span>
+        <input required="" type="date" placeholder="dd-mm-yyyy" pattern="\d\d-\d\d-\d\d\d\d" min="01-01-1500" max="12-31-2500" name="date" value="">
+      </div>
+      <div class="header-btns">
+        <input type="submit" class="button mt-2" value="Get a reading">
+        <!-- gives params 'name' and 'birthdate' -->
+      </div>
+    </form>
+    <small class="existing-user-login"><%= link_to 'Log in', new_user_session_path %></small>
+  </div>
 </div>
 
 <!-- <div class="my-5">
