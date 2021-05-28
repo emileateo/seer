@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Our Feng Shui Masters</h1>
   <% @masters.each do |master| %>
-    <div class="card-product">
+    <div class="card-product card-w-pic">
       <%= cl_image_tag master.photo.key %>
       <div class="card-product-infos">
       <%= link_to master.name, master  %>
