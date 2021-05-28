@@ -3,9 +3,11 @@
     <%= msg %>
   </div>
 <% end %>
-<h1>Welcome back, <strong><%= @user.name%></strong></h1>
 
-<p><strong>Today:</strong> <%= Date.today.strftime("%A %-d %B") %></p>
+<div class="top-details">
+  <h1 class="greeting">Welcome back, <%= @user.name%></h1>
+  <p><strong>Today:</strong> <%= Date.today.strftime("%A %-d %B") %></p>
+</div>
 
 <% if @user.master? %>
 
@@ -45,32 +47,12 @@
 
   <%= render @preferred_posts %>
 
-<!--   <%= link_to masters_users_path do %> -->
-    <!-- <div class="card-product"> -->
-      <!-- <%= image_tag 'fortuneteller.jpg' %> -->
-      <!-- <div class="card-product-infos"> -->
-        <!-- <h2>Consultations</h2> -->
-        <!-- <p>Sometimes you just need some more information. Consult a professional ...</p> -->
-      <!-- </div> -->
-    <!-- </div> -->
-  <!-- <% end %> -->
-
-<!--   <%= link_to appointments_path do %> -->
-<!--     <div class="card-product"> -->
-<!--       <%= image_tag 'fortuneteller.jpg' %> -->
-<!--       <div class="card-product-infos"> -->
-<!--         <h2>Appointments</h2> -->
-<!--         <p>View your next appointments and get those questions ready! ...</p> -->
-<!--       </div> -->
-  <!--   </div> -->
-<!--   <% end %> -->
-
   <%= link_to services_index_path do %>
-    <div class="card-product">
+    <div class="card-product services">
       <%= image_tag 'crystalball.jpg' %>
       <div class="card-product-infos">
         <h2>Services</h2>
-        <p>Seer has a range of additional services available to choose from ...</p>
+        <p>Seer has a range of additional services available to provide guidance for you.</p>
       </div>
     </div>
   <% end %>
