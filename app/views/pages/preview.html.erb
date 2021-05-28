@@ -1,28 +1,33 @@
-<h1>Welcome, <%= @name %>.</h1>
+<div class="preview-intro">
+  <h1>Welcome, <%= @name %>.</h1>
+  <small>
+    Today is <%= Date.today.strftime("%A, %-d %B %Y") %>.<br>
+    You were born in the year of the <%= @sign %>.
+  </small>
+</div>
 
-For today, <%= Date.today.strftime("%A %-d %B") %>:
-<p><%= @post.description %></p>
 
-<div class="card-product">
+<div class="circle my-5">
+  <div class="preview-fortune-container">
+    <p class="preview-fortune"><%= @post.description %></p>
+  </div>
+</div>
+
+<!-- <div class="card-product preview-user-info">
   <%= image_tag "#{@sign.downcase}.jpg" %>
   <div class="card-product-infos">
     <h2>About you:</h2>
     <p>You are born in the year of the <%= @sign %>.</p>
     <p><%= @fortune["response"]["personality"]["meaning"]%></p>
-    <!-- <p><%= @parsed_text %></p> -->
   </div>
+</div> -->
+
+<div class="button">
+  <%= link_to new_user_registration_path(:name => @name, :birthdate => @birth_date) do %>
+    <button id="sign-up-button" class="btn btn-ghost">Discover your destiny</button>
+  <% end %>
 </div>
 
-<div class="card-product">
-  <%= image_tag "attitude.jpg" %>
-  <div class="card-product-infos">
-    <h2>Attitude</h2>
-    <p><%= @fortune["response"]["attitude"]["meaning"]%></p>
-  </div>
-</div>
+<!-- <small class="preview-zodiac">
 
-
-<div class="my-5">
-  Want to find out more? <%= link_to 'Sign up', new_user_registration_path(:name => @name, :birthdate => @birth_date) %>!
-</div>
-</div>
+</small> -->

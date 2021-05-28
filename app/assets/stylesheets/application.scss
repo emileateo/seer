@@ -11,6 +11,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "devise/index";
 
 // Fonts for the app
 @import url('https://fonts.googleapis.com/css2?family=Forum&family=Nunito:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,400&display=swap');
@@ -18,7 +19,7 @@
 // ligher, light, regular, bold
 
 body {
-  background-color: #f3eee8;
+  background-color: #FFF3E3;
   font-family: 'Spartan', sans-serif;
   font-weight: regular;
   padding-bottom: 80px;
@@ -36,4 +37,5 @@ h2, h3, h4 {
 .container {
   margin-top: 16px;
   padding: 16px;
+  text-align: center;
 }
