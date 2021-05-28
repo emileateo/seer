@@ -24,10 +24,10 @@ Category.create!(name: "Relationship")
 
 puts "Categories created"
 
-5.times do
+10.times do
   rand_zodiac = rand(1..12).to_s
 
-  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}&split=true"
+  url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
   puts url
 
   fortune_serialized = URI.open(url).read
@@ -49,21 +49,21 @@ end
 
 
 case Rails.env
-
 when "development"
   Appointment.destroy_all
   puts "Development appointments deleted"
   User.destroy_all
   puts "Development users deleted"
 
-  5.times do
+  10.times do
     rand_zodiac = rand(1..12).to_s
-    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["ASTRO_API_KEY"]}&split=true"
-    fortune = JSON.parse(URI.open(url).read)
+    url = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{rand_zodiac}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{ENV["API_KEY"]}&split=true"
+    fortune_serialized = URI.open(url).read
+    fortune = JSON.parse(fortune_serialized)
     pp fortune
 
     User.create!(
-      name: Faker::Name.name,
+      name: Faker::Games::Pokemon.name,
       email: Faker::Internet.email,
       password: "123456",
       categories: Category.all.sample(2),
@@ -77,8 +77,9 @@ when "development"
 
     file = URI.open("https://source.unsplash.com/featured/?face")
 
+
     master = User.create!(
-      name: Faker::Name.name,
+      name: Faker::Games::Pokemon.name,
       email: Faker::Internet.email,
       password: "123456",
       birthdate: Faker::Date.between_except(from: 10.years.ago, to: 1.year.from_now, excepted: Date.today),
