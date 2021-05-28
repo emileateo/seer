@@ -63,7 +63,7 @@ when "development"
     pp fortune
 
     User.create!(
-      name: Faker::Games::Pokemon.name,
+      name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "123456",
       categories: Category.all.sample(2),
@@ -79,7 +79,7 @@ when "development"
 
 
     master = User.create!(
-      name: Faker::Games::Pokemon.name,
+      name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "123456",
       birthdate: Faker::Date.between_except(from: 10.years.ago, to: 1.year.from_now, excepted: Date.today),
