@@ -1,18 +1,29 @@
 // Specific CSS for your home-page
-body {
- background-image: url("images/backgrounds/home.jpg");
- // background-color: rgba(255,255,255,0.4);
+.container {
+  padding: 0;
+  margin: 0;
+  // height: 100vh;
+}
+
+.landing {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)), url("https://images.pexels.com/photos/4046718/pexels-photo-4046718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  height: 100vh;
+// set size & stop image repetition
+  background-repeat : no-repeat;
+  background-size : cover;
+  padding: 0;
+  margin: 0;
+  background-attachment: top;
 }
 
 .landing-text {
-  background-image: url("images/backgrounds/home.jpg");
-  text-align: center;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  text-align: left;
+  padding-top: 28px;
+  margin: 0 0 40px 32px;
 }
 
 .landing-text .title {
-  margin-bottom: 60px;
+  margin-bottom: 32px;
 }
 
 .landing-text .title h1 {
@@ -20,35 +31,32 @@ body {
 }
 
 .landing-text .title h2 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: lighter;
 }
 
 .landing-text p {
   font-weight: lighter;
-  margin: 20px;
 }
 
 .new-user-form {
-  margin: auto;
+  margin-left: 32px;
   width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: left;
 }
 
 .user-input-form {
-  justify-items: center;
-  align-items: center;
+  // justify-items: center;
+  align-items: left;
   display: flex;
   flex-direction: column;
 }
 
 .user-data {
-  justify-items: center;
-  display: flex;
-  text-align: center;
-  margin: 4px;
+  justify-items: left;
+  // display: flex;
+  text-align: left;
+  margin-bottom: 16px;
 }
 
 .user-data input {
@@ -62,6 +70,7 @@ body {
   background-color: #000;
   border-radius: 16px;
   padding: 4px 16px 4px 16px;
+  margin-bottom: 16px;
   border: none;
 }
 
@@ -69,11 +78,6 @@ body {
   color: #000;
   background-color: rgba(255,255,255,0.5);
   transition: color 0.3s, background-color 0.3s;
-}
-
-.existing-user-login {
-  padding-top: 1.6rem;
-  text-align: center;
 }
 
 .existing-user-login a {

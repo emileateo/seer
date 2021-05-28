@@ -45,7 +45,8 @@ class PagesController < ApplicationController
 
     # parsed_content = html_doc.search('.article-content.page-section p').first
     # @parsed_text = parsed_content.text.strip
-    todays_reading = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{(@year - 2000) % 12}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{api_key}&split=true"
+
+    todays_reading = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{(@year - 2000) % 12 + 1}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{api_key}&split=true"
 
     todays_fortune = JSON.parse(URI.open(todays_reading).read)
 
