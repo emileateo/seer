@@ -65,13 +65,18 @@
   background-color: rgba(255,255,255,0.5)
 }
 
-.new-user-form .button {
+.new-user-form .new-user-button {
   color: #FFF;
   background-color: #000;
   border-radius: 16px;
   padding: 4px 16px 4px 16px;
   margin-bottom: 16px;
   border: none;
+  align: left;
+}
+
+.new-user-button-container {
+  display: flex;
 }
 
 .new-user-form .button:hover{
@@ -82,4 +87,5 @@
 
 .existing-user-login a {
   color: #292929;
+  display: flex;
 }

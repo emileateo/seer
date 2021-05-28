@@ -1,18 +1,26 @@
-<div class="card-love">
-  <%= image_tag 'rose_copy.jpg' %>
-  <div class="card-product-infos">
-    <h1>Love Compatibility</h1>
-    <div class="new-user-form">
-      <form name="new_user_form" novalidate="" action="/loves/show" class="user-input-form">
-      <div class="user-data info">
-        <p>Love is hard but it doesn't have to be a guessing game.</p>
-        <p><br>Enter their Birthdate to see more:</p>
-        <input required="" type="date" placeholder="dd-mm-yyyy" pattern="\d\d-\d\d-\d\d\d\d" min="01-01-1500" max="12-31-2500" name="date" value="">
-      </div>
-      <div class="header-btns">
-        <input type="submit" class="button mt-2" value="Do we match?">
-      </div>
-      </form>
+<h1 class="mt-4">Love Divination</h1>
+<p class="mt-3">Love is hard but it doesn't have to<br>be a guessing game.</p>
+<div class="inside-got-heart">
+  <div class="heart1"></div>
+  <div class="heart2"></div>
+  <div class="heart3"></div>
+</div>
+
+<div class="card-love mt-0">
+  <!-- <%= image_tag 'rose_copy.jpg' %> -->
+  <div class="new-user-form">
+    <form name="new_user_form" novalidate="" action="/loves/show" class="user-input-form">
+    <div class="user-data love-data">
+      <p class="mb-2">What's their name?</p>
+      <input required="" type="text" placeholder="Name" name="name">
+
+      <p class="mt-4 mb-2">When were they born?</p>
+      <input required="" type="date" placeholder="dd-mm-yyyy" pattern="\d\d-\d\d-\d\d\d\d" min="01-01-1500" max="12-31-2500" name="date">
     </div>
+    <div class="header-btns">
+      <input type="submit" class="btn btn-ghost mt-2" value="Do we match?">
+    </div>
+    </form>
   </div>
 </div>
+

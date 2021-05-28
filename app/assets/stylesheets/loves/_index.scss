@@ -1,0 +1,108 @@
+.love-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.love-data p {
+  text-align: center;
+}
+
+.inside-got-heart {
+  margin: 52px auto;
+  align-content: center;
+}
+
+.heart1 {
+  background-color: $fortune-coral;
+  display: inline-block;
+  height: 30px;
+  margin: 0 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 30px;
+}
+
+.heart1:before,
+.heart1:after {
+  content: "";
+  background-color: $fortune-coral;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
+
+.heart1:before {
+  top: -15px;
+  left: 0;
+}
+
+.heart1:after {
+  left: 15px;
+  top: 0;
+}
+
+
+.heart2 {
+  background-color: $fortune-purple;
+  display: inline-block;
+  height: 30px;
+  margin: 0 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 30px;
+}
+
+.heart2:before,
+.heart2:after {
+  content: "";
+  background-color: $fortune-purple;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
+
+.heart2:before {
+  top: -15px;
+  left: 0;
+}
+
+.heart2:after {
+  left: 15px;
+  top: 0;
+}
+
+
+.heart3 {
+  background-color: $fortune-coral;
+  display: inline-block;
+  height: 30px;
+  margin: 0 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 30px;
+}
+
+.heart3:before,
+.heart3:after {
+  content: "";
+  background-color: $fortune-coral;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
+
+.heart3:before {
+  top: -15px;
+  left: 0;
+}
+
+.heart3:after {
+  left: 15px;
+  top: 0;
+}
