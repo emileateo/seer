@@ -22,6 +22,7 @@
       <!-- gives params 'name' and 'birthdate' -->
     </div>
   </form>
+  <small class="existing-user-login"><%= link_to 'Log in', new_user_session_path %></small>
 </div>
 
 <!-- <div class="my-5">
@@ -30,11 +31,4 @@
      <=  render Category.all %>
   </div>
 </div> -->
-
-<div class="dev-text my-5">
-  <p>for development purposes only...</p>
-  <% unless user_signed_in? %>
-    <p>Already have an account with us? <%= link_to 'Log in', new_user_session_path %></p>
-  <% end %>
-</div>
 

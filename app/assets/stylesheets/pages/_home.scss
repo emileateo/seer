@@ -1,6 +1,11 @@
 // Specific CSS for your home-page
+body {
+ background-image: url("images/backgrounds/home.jpg");
+ // background-color: rgba(255,255,255,0.4);
+}
 
 .landing-text {
+  background-image: url("images/backgrounds/home.jpg");
   text-align: center;
   margin-top: 60px;
   margin-bottom: 60px;
@@ -66,15 +71,11 @@
   transition: color 0.3s, background-color 0.3s;
 }
 
-.dev-text {
-  opacity: 0.6;
-  background-color: #FFF;
-  padding: 16px;
-  border: 1px solid #000;
-  border-radius: 5px;
+.existing-user-login {
+  padding-top: 1.6rem;
+  text-align: center;
 }
 
-.dev-text a {
-  margin: 0;
-  padding: 0;
+.existing-user-login a {
+  color: #292929;
 }

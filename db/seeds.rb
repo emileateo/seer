@@ -39,9 +39,7 @@ puts "Categories created"
   Post.create!(
     title: post_category.name,
     description: fortune["response"]["bot_response"][post_category.name.downcase]["split_response"],
-    category: post_category,
-    # lucky_number: fortune["response"]["lucky_number"][0],
-    # lucky_color: fortune["response"]["lucky_color"]
+    category: post_category
   )
 
   puts "Post created!"

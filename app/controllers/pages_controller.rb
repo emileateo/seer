@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   end
 
   def preview
-    api_key = '0a16020e-d9b1-527a-8a17-f47fd62bec4e'
+    api_key = '74740b9d-27b4-5322-b45c-b37be2586038'
     @name = params[:name]
     @birth_date = params[:date]
 
@@ -39,16 +39,27 @@ class PagesController < ApplicationController
     when 11 then @sign = 'Hare'
     end
 
-    zodiac_url = "https://chinesenewyear.net/zodiac/#{@sign.downcase}/"
-    html_file = URI.open(zodiac_url).read
-    html_doc = Nokogiri::HTML(html_file)
+    # zodiac_url = "https://chinesenewyear.net/zodiac/#{@sign.downcase}/"
+    # html_file = URI.open(zodiac_url).read
+    # html_doc = Nokogiri::HTML(html_file)
 
-    parsed_content = html_doc.search('.article-content.page-section p').first
-    @parsed_text = parsed_content.text.strip
+    # parsed_content = html_doc.search('.article-content.page-section p').first
+    # @parsed_text = parsed_content.text.strip
+    todays_reading = "https://api.vedicastroapi.com/json/prediction/dailysun?zodiac=#{(@year - 2000) % 12}&show_same=true&date=#{Time.now.strftime("%d/%m/%Y")}&type=TYPE&api_key=#{api_key}&split=true"
+
+    todays_fortune = JSON.parse(URI.open(todays_reading).read)
+
+    post_category = Category.all.sample
+
+    @post = Post.create!(
+      title: post_category.name,
+      description: todays_fortune["response"]["bot_response"][post_category.name.downcase]["split_response"],
+      category: post_category
+    )
   end
 
   def dashboard
-    api_key = '0a16020e-d9b1-527a-8a17-f47fd62bec4e'
+    api_key = '74740b9d-27b4-5322-b45c-b37be2586038'
     @user = current_user
     @user.master = false unless @user.master
     @user_zodiac = user_zodiac(@user)
