@@ -4,7 +4,6 @@
     <h2>Take destiny into your hands.</h2>
   </div>
 
-  <p>Gone are the days where Feng Shui meant groaning as your mother dragged you to Chinatown before the start of a new school year.</p>
   <p>Get in touch with the Earth on your own terms.<br>Make your own story.</p>
 </div>
 
@@ -23,6 +22,7 @@
       <!-- gives params 'name' and 'birthdate' -->
     </div>
   </form>
+  <small class="existing-user-login"><%= link_to 'Log in', new_user_session_path %></small>
 </div>
 
 <!-- <div class="my-5">
@@ -31,14 +31,4 @@
      <=  render Category.all %>
   </div>
 </div> -->
-
-<div class="dev-text my-5">
-  <p>for development purposes only...</p>
-  <% if user_signed_in? %>
-    <p>You are signed in as <%= current_user.name %>.
-    <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "nav-link" %></p>
-  <% else %>
-    <p>You are not signed in yet. <%= link_to 'Log in', new_user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %></p>
-  <% end %>
-</div>
 
