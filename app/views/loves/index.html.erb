@@ -1,4 +1,4 @@
-  <div class="card-love">
+ <div class="card-love">
     <%= image_tag 'rose_copy.jpg' %>
     <div class="card-product-infos">
       <h2>Love Compatibility</h2>
@@ -7,7 +7,6 @@
             <div class="user-data info">
               <p>Love is hard but it doesn't have to be a guessing game.</p>
               <p><br>Enter their Birthdate to see more...</p>
-          <!--   <span> Love is hard but it doesn't have to be a guessing game...&nbsp;</span> -->
             <input required="" type="date" placeholder="dd-mm-yyyy" pattern="\d\d-\d\d-\d\d\d\d" min="01-01-1500" max="12-31-2500" name="date" value="">
           </div>
           <div class="header-btns">
@@ -17,4 +16,21 @@
           </form>
         </div>
     </div>
-  </div>
+  </div> -->
+
+
+<h1>Love compatibility analysis</h1>
+<div class="new-user-form">
+  <form name="new_user_form" novalidate="" action="/loves/show" class="user-input-form">
+    <div class="user-data info">
+      <!-- <span> The other person's name is...<br></span>
+      <input required="" type="text" name="name" value=""> -->
+      <span> The other person's birthdate is...<br></span>
+      <input required="" type="date" placeholder="dd-mm-yyyy" pattern="\d\d-\d\d-\d\d\d\d" min="01-01-1500" max="12-31-2500" name="date" value="">
+    </div>
+    <div class="header-btns">
+      <input type="submit" class="btn btn-ghost mt-2" value="Get a reading">
+      <!-- gives params 'date' -->
+    </div>
+  </form>
+</div>
