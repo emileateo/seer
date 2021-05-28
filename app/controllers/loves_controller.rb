@@ -4,13 +4,11 @@ require 'zodiac'
 require 'date'
 
 class LovesController < ApplicationController
- def index
- end
-
-
-
+  def index
+  end
 
   def show
+    @lover_name = params[:name]
     @lover_birth_date = params[:date]
     @lover_birth_date_parsed = Date.parse(@lover_birth_date)
     @lover_zodiac = lover_zodiac(@lover_birth_date_parsed)
@@ -21,6 +19,11 @@ class LovesController < ApplicationController
 
     @love_result = love_compatibility["response"]["score"]
 
+    @your_year = current_user.birthdate.year
+    @lover_year = @lover_birth_date_parsed.year
+
+    @your_chinese_zodiac = chinese_zodiac(@your_year)
+    @lover_chinese_zodiac = chinese_zodiac(@lover_year)
   end
 
   private
@@ -39,6 +42,23 @@ class LovesController < ApplicationController
     when "Capricorn" then @user_zodiac = "10"
     when "Aquarius" then @user_zodiac = "11"
     when "Pisces" then @user_zodiac = "12"
+    end
+  end
+
+  def chinese_zodiac(year)
+    case (year - 2000) % 12
+    when 0 then @sign = 'Dragon'
+    when 1 then @sign = 'Snake'
+    when 2 then @sign = 'Horse'
+    when 3 then @sign = 'Sheep'
+    when 4 then @sign = 'Monkey'
+    when 5 then @sign = 'Rooster'
+    when 6 then @sign = 'Dog'
+    when 7 then @sign = 'Pig'
+    when 8 then @sign = 'Rat'
+    when 9 then @sign = 'Ox'
+    when 10 then @sign = 'Tiger'
+    when 11 then @sign = 'Hare'
     end
   end
 end
