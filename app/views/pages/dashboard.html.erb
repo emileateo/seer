@@ -13,28 +13,28 @@
 
   <% if @unaccepted_appointments.count != 0 %>
     <div class="requests mt-3">
-      <h3>New <%= "request".pluralize(@unaccepted_appointments.count) %> for you:</h3>
+      <h4 class="dashboard-header">New <%= "request".pluralize(@unaccepted_appointments.count) %> for you:</h4>
       <%= render @unaccepted_appointments %>
     </div>
   <% end %>
 
   <% if @accepted_appointments.count != 0 %>
     <div class="accepted-requests mt-3">
-      <h3>Appointments pending payment:</h3>
+      <h4 class="dashboard-header">Appointments pending payment:</h4>
       <%= render @accepted_appointments %>
     </div>
   <% end %>
 
   <% if @confirmed_appointments.count != 0 %>
     <div class="accepted-requests mt-3">
-      <h3>Your upcoming appointments:</h3>
+      <h4 class="dashboard-header">Your upcoming appointments:</h4>
       <%= render @confirmed_appointments %>
     </div>
   <% end %>
 
   <% if @appointments.count == 0 %>
     <div class="accepted-requests mt-3">
-      <h3>You have no active appointments.</h3>
+      <h4 class="dashboard-header">You have no active appointments.</h4>
     </div>
   <% end %>
 
